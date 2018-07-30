@@ -1510,159 +1510,1399 @@ end
 
 
 
-
-
-
-
-
-
-
-
 -------------------------------------文字识别--------------------------------------------------
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+--[[
+给指定的字库中添加一条字库信息
+参数定义:
+index 整形数:字库的序号,取值为0-99,目前最多支持100个字库
+dict_info 字符串:字库描述串，具体参考大漠综合工具中的字符定义
+示例:
+dm_ret = dm.AddDict(0,"081101BF8020089FD10A21443F85038$记$0.0$11")
+
+注意: 此函数尽量在小字库中使用，大字库中使用AddDict速度比较慢
+另，此函数是向指定的字库所在的内存中添加,而不是往文件中添加. 添加以后立刻就可以用于文字识别。无须再SetDict
+如果要保存添加进去的字库信息，需要调用SaveDict
+]]
+function DMCenter:AddDict(index,dict_info)
+    return CPLUS.DmCenter.AddDict(index,dict_info) == 1
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+清空指定的字库.
+参数定义:
+index 整形数:字库的序号,取值为0-99,目前最多支持100个字库
+示例:
+dm.ClearDict 0
+注意: 此函数尽量在小字库中使用，大字库中使用AddDict速度比较慢
+另外，此函数支持清空内存中的字库，而不是字库文件本身.
+]]
+function DMCenter:ClearDict(index)
+    return CPLUS.DmCenter.ClearDict(index) == 1
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+允许当前调用的对象使用全局字库。  
+如果你的程序中对象太多,并且每个对象都用到了同样的字库,
+可以考虑用全局字库,这样可以节省大量内存.
+参数定义:
+
+enable 整形数: 0 关闭 1 打开
+返回值:
+示例:
+dm.EnableShareDict 1
+dm.SetDict 0,"xxx.txt"
+注 : 一旦当前对象开启了全局字库,那么所有的和文字识别，字库相关的接口，通通都认为是对全局字库的操作.
+如果所有对象都要需要全局字
+]]
+function DMCenter:EnableShareDict(enable)
+    return CPLUS.DmCenter.EnableShareDict(enable) == 1
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+根据指定的范围,以及指定的颜色描述，提取点阵信息，类似于大漠工具里的单独提取.
+参数定义:
+
+x1 整形数:左上角X坐标
+y1 整形数:左上角Y坐标
+x2 整形数:右下角X坐标
+y2 整形数:右下角Y坐标
+color 字符串: 颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+word 字符串: 待定义的文字,不能为空，且不能为关键符号"$"
+
+返回值:
+字符串:
+识别到的点阵信息，可用于AddDict
+如果失败，返回空
+
+示例:
+info = dm.FetchWord(200,200,250,220,"abcdef-101010|ffffff-101010","张三")
+If len(info) > 0 Then
+    dm.AddDict 3,info
+End if
+
+info = dm.FetchWord(200,200,250,220,"b@abcdef-101010|ffffff-101010","李四")
+If len(info) > 0 Then
+    dm.AddDict 2,info
+End if
+
+info = dm.FetchWord(200,200,250,220,"b@0.100.100-0.0.0","张三")
+If len(info) > 0 Then
+    dm.AddDict 4,info
+End if
+
+info = dm.FetchWord(200,200,250,220,"0.100.100-0.0.0|100.0.0-0.0.0","王")
+If len(info) > 0 Then
+    dm.AddDict 4,info
+End if
+]]
+function DMCenter:FetchWord(x1, y1, x2, y2, color, word)
+    return CPLUS.DmCenter.FetchWord(x1, y1, x2, y2, color, word)
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+   在屏幕范围(x1,y1,x2,y2)内,查找string(可以是任意个字符串的组合),
+   并返回符合color_format的坐标位置,相似度sim同Ocr接口描述.
+    (多色,差色查找类似于Ocr接口,不再重述) 
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例 .注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+intX 变参指针:返回X坐标没找到返回-1
+intY 变参指针:返回Y坐标没找到返回-1
+
+返回值:table{x=0,y=0}
+
+整形数:
+返回字符串的索引 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
+
+示例:
+dm_ret = dm.FindStr(0,0,2000,2000,"长安","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+dm_ret = dm.FindStr(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+dm_ret = dm.FindStr(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+注: 此函数的原理是先Ocr识别，然后再查找。所以速度比FindStrFast要慢，尤其是在字库
+很大，或者模糊度不为1.0时。
+一般字库字符数量小于100左右，模糊度为1.0时，用FindStr要快一些,否则用FindStrFast.
+]]
+function DMCenter:FindStr(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStr(x1,y1,x2,y2,string,color_format,sim)
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+在屏幕范围(x1,y1,x2,y2)内,查找string(可以是任意个字符串的组合),
+并返回符合color_format的坐标位置,相似度sim同Ocr接口描述.
+(多色,差色查找类似于Ocr接口,不再重述)
+易语言用不了FindStr可以用此接口来代替
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+
+字符串:
+返回字符串序号以及X和Y坐标,形式如"id|x|y", 比如"0|100|200",没找到时，id和X以及Y均为-1，"-1|-1|-1"
+
+示例:
+pos = dm.FindStrE(0,0,2000,2000,"长安","9f2e3f-000000",1.0)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+pos = dm.FindStrE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+pos = dm.FindStrE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",1.0)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+注: 此函数的原理是先Ocr识别，然后再查找。所以速度比FindStrFastE要慢，尤其是在字库
+很大，或者模糊度不为1.0时。
+一般字库字符数量小于100左右，模糊度为1.0时，用FindStrE要快一些,否则用FindStrFastE.
+]]
+function DMCenter:FindStrE(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrE(x1,y1,x2,y2,string,color_format,sim)
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+
+--[[
+在屏幕范围(x1,y1,x2,y2)内,查找string(可以是任意字符串的组合),
+并返回符合color_format的所有坐标位置,相似度sim同Ocr接口描述.
+(多色,差色查找类似于Ocr接口,不再重述)
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回所有找到的坐标集合,格式如下:
+"id,x0,y0|id,x1,y1|......|id,xn,yn"
+比如"0,100,20|2,30,40" 表示找到了两个,第一个,对应的是序号为0的字符串,坐标是(100,20),第二个是序号为2的字符串,坐标(30,40)
+
+示例:
+dm_ret = dm.FindStrEx(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0)
+If len(dm_ret) > 0 Then
+   ss = split(dm_ret,"|")
+   index = 0
+   count = UBound(ss) + 1
+   Do While index < count
+      TracePrint ss(index)
+      sss = split(ss(index),",")
+      id = int(sss(0))
+      x = int(sss(1))
+      y = int(sss(2))
+      dm.MoveTo x,y
+      Delay 1000
+      index = index+1
+   Loop
+End If
+
+注: 此函数的原理是先Ocr识别，然后再查找。所以速度比FindStrExFast要慢，尤其是在字库
+很大，或者模糊度不为1.0时。
+一般字库字符数量小于100左右，模糊度为1.0时，用FindStrEx要快一些,否则用FindStrFastEx.
+]]
+function DMCenter:FindStrEx(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrEx(x1,y1,x2,y2,string,color_format,sim)
 end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+
+
+
+--[[
+在屏幕范围(x1,y1,x2,y2)内,查找string(可以是任意字符串的组合),并返回符合color_format的所有坐标位置,相似度sim同Ocr接口描述.
+(多色,差色查找类似于Ocr接口,不再重述). 此函数同FindStrEx,只是返回值不同. 
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回所有找到的坐标集合,格式如下:
+"str,x0,y0| str,x1,y1|......| str,xn,yn"
+比如"长安,100,20|大雁塔,30,40" 表示找到了两个,第一个是长安 ,坐标是(100,20),第二个是大雁塔,坐标(30,40)
+
+示例:
+dm_ret = dm.FindStrExS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0)
+If len(dm_ret) > 0 Then
+   ss = split(dm_ret,"|")
+   index = 0
+   count = UBound(ss) + 1
+   Do While index < count
+      TracePrint ss(index)
+      sss = split(ss(index),",")
+      str = sss(0)
+      x = int(sss(1))
+      y = int(sss(2))
+      dm.MoveTo x,y
+      Delay 1000
+      index = index+1
+   Loop
+End If
+
+注: 此函数的原理是先Ocr识别，然后再查找。所以速度比FindStrExFastS要慢，尤其是在字库
+很大，或者模糊度不为1.0时。
+一般字库字符数量小于100左右，模糊度为1.0时，用FindStrExS要快一些,否则用FindStrFastExS
+]]
+function DMCenter:FindStrExS(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrExS(x1,y1,x2,y2,string,color_format,sim)
 end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+
+
+--[[
+同FindStr
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+intX 变参指针:返回X坐标 没找到返回-1
+intY 变参指针:返回Y坐标 没找到返回-1
+
+返回值:table{x=0,y=0}
+
+整形数:
+返回字符串的索引 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
+
+示例:
+dm_ret = dm.FindStrFast(0,0,2000,2000,"长安","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+dm_ret = dm.FindStrFast(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",0.9,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+dm_ret = dm.FindStrFast(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",0.9,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+注: 此函数比FindStr要快很多，尤其是在字库很大时，或者模糊识别时，效果非常明显。
+推荐使用此函数。
+另外由于此函数是只识别待查找的字符，所以可能会有如下情况出现问题。
+比如 字库中有"张和三" 一共3个字符数据，然后待识别区域里是"张和三",如果用FindStr查找
+"张三"肯定是找不到的，但是用FindStrFast却可以找到，因为"和"这个字符没有列入查找计划中
+所以，在使用此函数时，也要特别注意这一点。
+]]
+function DMCenter:FindStrFast(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrFast(x1,y1,x2,y2,string,color_format,sim)
 end
+
+
+
+
+--[[
+同FindStrE
+易语言用不了FindStrFast可以用此接口来代替
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回字符串序号以及X和Y坐标,形式如"id|x|y", 比如"0|100|200",没找到时，id和X以及Y均为-1，"-1|-1|-1"
+
+示例:
+pos = dm.FindStrFastE(0,0,2000,2000,"长安","9f2e3f-000000",1.0)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+pos = dm.FindStrFastE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",0.9)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+pos = dm.FindStrFastE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",0.9)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+注: 此函数比FindStrE要快很多，尤其是在字库很大时，或者模糊识别时，效果非常明显。
+推荐使用此函数。
+另外由于此函数是只识别待查找的字符，所以可能会有如下情况出现问题。
+比如 字库中有"张和三" 一共3个字符数据，然后待识别区域里是"张和三",如果用FindStrE查找
+"张三"肯定是找不到的，但是用FindStrFastE却可以找到，因为"和"这个字符没有列入查找计划中
+所以，在使用此函数时，也要特别注意这一点。
+]]
+function DMCenter:FindStrFastE(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrFastE(x1,y1,x2,y2,string,color_format,sim)
+end
+
+
+
+
+--[[
+同FindStrEx
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回所有找到的坐标集合,格式如下:
+"id,x0,y0|id,x1,y1|......|id,xn,yn"
+比如"0,100,20|2,30,40" 表示找到了两个,第一个,对应的是序号为0的字符串,坐标是(100,20),第二个是序号为2的字符串,坐标(30,40)
+
+示例:
+dm_ret = dm.FindStrFastEx(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",0.9)
+If len(dm_ret) > 0 Then
+   ss = split(dm_ret,"|")
+   index = 0
+   count = UBound(ss) + 1
+   Do While index < count
+      TracePrint ss(index)
+      sss = split(ss(index),",")
+      id = int(sss(0))
+      x = int(sss(1))
+      y = int(sss(2))
+      dm.MoveTo x,y
+      Delay 1000
+      index = index+1
+   Loop
+End If
+
+注: 此函数比FindStrEx要快很多，尤其是在字库很大时，或者模糊识别时，效果非常明显。
+推荐使用此函数。
+另外由于此函数是只识别待查找的字符，所以可能会有如下情况出现问题。
+比如 字库中有"张和三" 一共3个字符数据，然后待识别区域里是"张和三",如果用FindStrEx查找
+"张三"肯定是找不到的，但是用FindStrFastEx却可以找到，因为"和"这个字符没有列入查找计划中
+所以，在使用此函数时，也要特别注意这一点。
+]]
+function DMCenter:FindStrFastEx(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrFastEx(x1,y1,x2,y2,string,color_format,sim)
+end
+
+
+
+
+
+--[[
+同FindStrExS. 
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例 .注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回所有找到的坐标集合,格式如下:
+"str,x0,y0| str,x1,y1|......| str,xn,yn"
+比如"长安,100,20|大雁塔,30,40" 表示找到了两个,第一个是长安 ,坐标是(100,20),第二个是大雁塔,坐标(30,40)
+示例:
+dm_ret = dm.FindStrFastExS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",0.9)
+If len(dm_ret) > 0 Then
+   ss = split(dm_ret,"|")
+   index = 0
+   count = UBound(ss) + 1
+   Do While index < count
+      TracePrint ss(index)
+      sss = split(ss(index),",")
+      str = sss(0)
+      x = int(sss(1))
+      y = int(sss(2))
+      dm.MoveTo x,y
+      Delay 1000
+      index = index+1
+   Loop
+End If
+注: 此函数比FindStrExS要快很多，尤其是在字库很大时，或者模糊识别时，效果非常明显。
+推荐使用此函数。
+另外由于此函数是只识别待查找的字符，所以可能会有如下情况出现问题。
+比如 字库中有"张和三" 一共3个字符数据，然后待识别区域里是"张和三",如果用FindStrExS查找
+"张三"肯定是找不到的，但是用FindStrFastExS却可以找到，因为"和"这个字符没有列入查找计划中
+所以，在使用此函数时，也要特别注意这一点。
+]]
+function DMCenter:FindStrFastExS(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrFastExS(x1,y1,x2,y2,string,color_format,sim)
+end
+
+
+
+
+--[[
+同FindStrS. 
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例 .注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+intX 变参指针:返回X坐标 没找到返回-1
+intY 变参指针:返回Y坐标 没找到返回-1
+
+返回值: table{x=0,y=0,str=""}
+
+字符串:
+返回找到的字符串. 没找到的话返回长度为0的字符串.
+
+示例:
+dm_ret = dm.FindStrFastS(0,0,2000,2000,"长安","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+dm_ret = dm.FindStrFastS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",0.9,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+dm_ret = dm.FindStrFastS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",0.9,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+注: 此函数比FindStrS要快很多，尤其是在字库很大时，或者模糊识别时，效果非常明显。
+推荐使用此函数。
+另外由于此函数是只识别待查找的字符，所以可能会有如下情况出现问题。
+比如 字库中有"张和三" 一共3个字符数据，然后待识别区域里是"张和三",如果用FindStrS查找
+"张三"肯定是找不到的，但是用FindStrFastS却可以找到，因为"和"这个字符没有列入查找计划中
+所以，在使用此函数时，也要特别注意这一点。
+]]
+function DMCenter:FindStrFastS(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrFastS(x1,y1,x2,y2,string,color_format,sim)
+end
+
+
+
+--[[
+在屏幕范围(x1,y1,x2,y2)内,查找string(可以是任意个字符串的组合),
+并返回符合color_format的坐标位置,相似度sim同Ocr接口描述.
+(多色,差色查找类似于Ocr接口,不再重述).此函数同FindStr,只是返回值不同.
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例 .注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+intX 变参指针:返回X坐标 没找到返回-1
+intY 变参指针:返回Y坐标 没找到返回-1
+
+返回值: table{x=0,y=0,str=""}
+字符串:
+返回找到的字符串. 没找到的话返回长度为0的字符串.
+
+示例:
+dm_ret = dm.FindStrS(0,0,2000,2000,"长安","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+dm_ret = dm.FindStrS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+dm_ret = dm.FindStrS(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",1.0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+注: 此函数的原理是先Ocr识别，然后再查找。所以速度比FindStrFastS要慢，尤其是在字库
+很大，或者模糊度不为1.0时。
+一般字库字符数量小于100左右，模糊度为1.0时，用FindStrS要快一些,否则用FindStrFastS.
+]]
+function DMCenter:FindStrS(x1,y1,x2,y2,string,color_format,sim)
+    return CPLUS.DmCenter.FindStrS(x1,y1,x2,y2,string,color_format,sim)
+end
+
+
+
+
+--[[
+同FindStr，但是不使用SetDict设置的字库，而利用系统自带的字库，速度比FindStr稍慢
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例 .注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+font_name 字符串:系统字体名,比如"宋体"
+font_size 整形数:系统字体尺寸，这个尺寸一定要以大漠综合工具获取的为准.如果获取尺寸看视频教程.
+flag 整形数:字体类别 取值可以是以下值的组合,比如1+2+4+8,2+4. 0表示正常字体.
+    1 : 粗体
+    2 : 斜体
+    4 : 下划线
+    8 : 删除线
+intX 变参指针:返回X坐标没找到返回-1
+intY 变参指针:返回Y坐标没找到返回-1
+
+返回值: table{x=0,y=0,str=""}
+整形数:
+返回字符串的索引 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
+
+示例:
+dm_ret = dm.FindStrWithFont(0,0,2000,2000,"长安","9f2e3f-000000",1.0,"宋体",9,0,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+dm_ret = dm.FindStrWithFont(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0,"宋体",9,1+2,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+dm_ret = dm.FindStrWithFont(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",1.0,"宋体",9,1+2,intX,intY)
+If intX >= 0 and intY >= 0 Then
+     dm.MoveTo intX,intY
+End If
+
+注: 对于如何获取字体尺寸以及名字等信息，可以参考视频教程，如何使用系统字库.
+]]
+function DMCenter:FindStrWithFont(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+    return CPLUS.DmCenter.FindStrWithFont(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+end
+
+
+
+--[[
+同FindStrE，但是不使用SetDict设置的字库，而利用系统自带的字库，速度比FindStrE稍慢
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+font_name 字符串:系统字体名,比如"宋体"
+font_size 整形数:系统字体尺寸，这个尺寸一定要以大漠综合工具获取的为准.如果获取尺寸看视频教程.
+flag 整形数:字体类别 取值可以是以下值的组合,比如1+2+4+8,2+4. 0表示正常字体.
+    1 : 粗体
+    2 : 斜体
+    4 : 下划线
+    8 : 删除线
+返回值:
+字符串:
+返回字符串序号以及X和Y坐标,形式如"id|x|y", 比如"0|100|200",没找到时，id和X以及Y均为-1，"-1|-1|-1"
+
+示例:
+pos = dm.FindStrWithFontE(0,0,2000,2000,"长安","9f2e3f-000000",1.0,"宋体",9,0)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+pos = dm.FindStrWithFontE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0,"宋体",9,1+2)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+
+// 查找时,对多行文本进行换行,换行分隔符是"|". 语法是在","后增加换行字符串.任意字符串都可以.
+pos = dm.FindStrWithFontE(0,0,2000,2000,"长安|洛阳","9f2e3f-000000,|",1.0,"宋体",9,1+2)
+pos = split(pos,"|")
+If int(pos(0)) >= 0 Then
+     dm.MoveTo int(pos(1)),int(pos(2))
+End If
+注: 对于如何获取字体尺寸以及名字等信息，可以参考视频教程，如何使用系统字库.
+]]
+function DMCenter:FindStrWithFontE(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+    return CPLUS.DmCenter.FindStrWithFontE(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+end
+
+
+
+
+--[[
+同FindStrEx，但是不使用SetDict设置的字库，而利用系统自带的字库，速度比FindStrEx稍慢
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+string 字符串:待查找的字符串, 可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串
+color_format 字符串:颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+font_name 字符串:系统字体名,比如"宋体"
+font_size 整形数:系统字体尺寸，这个尺寸一定要以大漠综合工具获取的为准.如果获取尺寸看视频教程.
+flag 整形数:字体类别 取值可以是以下值的组合,比如1+2+4+8,2+4. 0表示正常字体.
+    1 : 粗体
+    2 : 斜体
+    4 : 下划线
+    8 : 删除线
+
+返回值:
+
+字符串:
+返回所有找到的坐标集合,格式如下:
+"id,x0,y0|id,x1,y1|......|id,xn,yn"
+比如"0,100,20|2,30,40" 表示找到了两个,第一个,对应的是序号为0的字符串,坐标是(100,20),第二个是序号为2的字符串,坐标(30,40)
+
+示例:
+dm_ret = dm.FindStrWithFontEx(0,0,2000,2000,"长安|洛阳","9f2e3f-000000",1.0,"宋体",9,1+2)
+If len(dm_ret) > 0 Then
+   ss = split(dm_ret,"|")
+   index = 0
+   count = UBound(ss) + 1
+   Do While index < count
+      TracePrint ss(index)
+      sss = split(ss(index),",")
+      id = int(sss(0))
+      x = int(sss(1))
+      y = int(sss(2))
+      dm.MoveTo x,y
+      Delay 1000
+      index = index+1
+   Loop
+End If
+注: 对于如何获取字体尺寸以及名字等信息，可以参考视频教程，如何使用系统字库.
+]]
+function DMCenter:FindStrWithFontEx(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+    return CPLUS.DmCenter.FindStrWithFontEx(x1,y1,x2,y2,string,color_format,sim,font_name,font_size,flag)
+end
+
+
+
+
+--[[
+获取指定字库中指定条目的字库信息.
+index 整形数: 字库序号(0-99)
+font_index 整形数: 字库条目序号(从0开始计数,数值不得超过指定字库的字库上限,具体参考GetDictCount)
+
+返回值:
+字符串:
+返回字库条目信息. 失败返回空串.
+
+示例:
+s = dm.GetDict(0,1245)
+TracePrint s
+s = dm.GetDict(1,678)
+TracePrint s
+]]
+function DMCenter:GetDict(index,font_index)
+    return CPLUS.DmCenter.GetDict(index,font_index)
+end
+
+
+
+
+--[[
+获取指定的字库中的字符数量.
+index 整形数: 字库序号(0-99)
+返回值:
+整形数:
+字库数量
+示例:
+count = dm.GetDictCount(0)
+TracePrint "0号字库使用的字库数量是:"&count
+]]
+function DMCenter:GetDictCount(index)
+    return CPLUS.DmCenter.GetDictCount(index)
+end
+
+
+
+
+
+--[[
+根据指定的文字，以及指定的系统字库信息，获取字库描述信息.
+str 字符串:需要获取的字符串
+font_name 字符串:系统字体名,比如"宋体"
+font_size 整形数:系统字体尺寸，这个尺寸一定要以大漠综合工具获取的为准.如何获取尺寸看视频教程.
+flag 整形数:字体类别 取值可以是以下值的组合,比如1+2+4+8,2+4. 0表示正常字体.
+    1 : 粗体
+    2 : 斜体
+    4 : 下划线
+    8 : 删除线
+返回值:
+字符串:
+返回字库信息,每个字符的字库信息用"|"来分割
+示例:
+// 下面的代码是获取"回收站"这3个字符的字库信息，然后加入到字库1中.
+font_desc = dm.GetDictInfo("回收站","宋体",9,0)
+font_desc = split(font_desc,"|")
+count = ubound(font_desc)
+for i = 0 to count
+    TracePrint font_desc(i)
+    dm.AddDict 1,font_desc(i)
+next
+]]
+function DMCenter:GetDictInfo(str,font_name,font_size,flag)
+    return CPLUS.DmCenter.GetDictInfo(str,font_name,font_size,flag)
+end
+
+
+
+
+--[[
+获取当前使用的字库序号(0-99)
+返回值:
+
+整形数:
+字库序号(0-99)
+
+]]
+function DMCenter:GetNowDict()
+    return CPLUS.DmCenter.GetNowDict()
+end
+
+
+
+
+--[[
+对插件部分接口的返回值进行解析,并返回ret中的坐标个数
+ret 字符串: 部分接口的返回串
+返回值:
+整形数:
+返回ret中的坐标个数
+]]
+function DMCenter:GetResultCount(ret)
+    return CPLUS.DmCenter.GetResultCount(ret)
+end
+
+
+
+
+--[[
+对插件部分接口的返回值进行解析,并根据指定的第index个坐标,返回具体的值
+ret 字符串:部分接口的返回串
+index 整形数: 第几个坐标
+intX 变参指针: 返回X坐标
+intY 变参指针: 返回Y坐标
+
+返回值:table{x=0,y=0}
+
+整形数:
+0:失败
+1:成功
+
+示例:
+s = dm.FindColorEx(0,0,2000,2000,"123456-000000|abcdef-202020",1.0,0)
+count = dm.GetResultCount(s)
+index = 0
+Do While index < count
+    dm_ret = dm.GetResultPos(s,index,intX,intY)
+    MessageBox intX&","&intY 
+    index = index + 1 
+Loop
+]]
+function DMCenter:GetResultPos(ret,index)
+    return CPLUS.DmCenter.GetResultPos(ret,index)
+end
+
+
+
+
+--[[
+在使用GetWords进行词组识别以后,可以用此接口进行识别词组数量的计算.
+参数定义:
+str 字符串: GetWords接口调用以后的返回值
+返回值:
+整形数:
+返回词组数量
+
+示例:
+s = dm.GetWords(0,0,2000,2000,"000000-000000",1.0)
+count = dm.GetWordResultCount(s)
+MessageBox count 
+]]
+function DMCenter:GetWordResultCount(str)
+    return CPLUS.DmCenter.GetWordResultCount(str)
+end
+
+
+
+
+
+
+--[[
+在使用GetWords进行词组识别以后,可以用此接口进行识别各个词组的坐标
+参数定义:
+
+str 字符串: GetWords的返回值
+
+index 整形数: 表示第几个词组
+
+intX 变参指针: 返回的X坐标
+
+intY 变参指针: 返回的Y坐标
+
+返回值: table{x=0,y=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+s = dm.GetWords(0,0,2000,2000,"000000-000000",1.0)
+count = dm.GetWordResultCount(s)
+index = 0
+Do While index < count
+    dm_ret = dm.GetWordResultPos(s,index,intX,intY)
+    MessageBox intX&","&intY 
+    index = index + 1 
+Loop 
+]]
+function DMCenter:GetWordResultPos(str,index)
+    return CPLUS.DmCenter.GetWordResultPos(str,index)
+end
+
+
+
+
+--[[
+在使用GetWords进行词组识别以后,可以用此接口进行识别各个词组的内容
+str 字符串: GetWords的返回值
+index 整形数: 表示第几个词组
+返回值:
+字符串:
+返回的第index个词组内容
+示例:
+s = dm.GetWords(0,0,2000,2000,"000000-000000",1.0)
+count = dm.GetWordResultCount(s)
+index = 0
+Do While index < count
+    word = dm.GetWordResultStr(s,index)
+    MessageBox word 
+    index = index + 1 
+Loop 
+]]
+function DMCenter:GetWordResultStr(str,index)
+    return CPLUS.DmCenter.GetWordResultStr(str,index)
+end
+
+
+
+--[[
+根据指定的范围,以及设定好的词组识别参数(一般不用更改,除非你真的理解了)
+识别这个范围内所有满足条件的词组. 比较适合用在未知文字的情况下,进行不定识别.
+x1 整形数:左上角X坐标
+y1 整形数:左上角Y坐标
+x2 整形数:右下角X坐标
+y2 整形数:右下角Y坐标
+color 字符串: 颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度 0.1-1.0 
+
+返回值:
+字符串:
+识别到的格式串,要用到专用函数来解析
+示例:
+s = dm.GetWords(0,0,2000,2000,"000000-000000",1.0)
+count = dm.GetWordResultCount(s)
+index = 0
+Do While index < count
+    dm_ret = dm.GetWordResultPos(s,index,intX,intY)
+    word = dm.GetWordResultStr(s,index)
+    MessageBox intX&","&intY&","&word
+    index = index + 1 
+Loop 
+]]
+function DMCenter:GetWords(x1, y1, x2, y2, color, sim)
+    return CPLUS.DmCenter.GetWords(x1, y1, x2, y2, color, sim)
+end
+
+
+
+
+
+--[[
+根据指定的范围,以及设定好的词组识别参数(一般不用更改,除非你真的理解了)
+识别这个范围内所有满足条件的词组. 这个识别函数不会用到字库。只是识别大概形状的位置 
+x1 整形数:左上角X坐标
+y1 整形数:左上角Y坐标
+x2 整形数:右下角X坐标
+y2 整形数:右下角Y坐标
+color 字符串: 颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+返回值:
+字符串:
+识别到的格式串,要用到专用函数来解析
+示例:
+s = dm.GetWordsNoDict(0,0,2000,2000,"000000-000000")
+count = dm.GetResultCount(s)
+index = 0
+Do While index < count
+    dm_ret = dm.GetResultPos(s,index,intX,intY)
+    MessageBox intX&","&intY
+    index = index + 1 
+Loop 
+]]
+function DMCenter:GetWordsNoDict(x1, y1, x2, y2, color)
+    return CPLUS.DmCenter.GetWordsNoDict(x1, y1, x2, y2, color)
+end
+
+
+
+
+--[[
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+color_format 字符串:颜色格式串. 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回识别到的字符串
+示例:
+//RGB单色识别
+s = dm.Ocr(0,0,2000,2000,"9f2e3f-000000",1.0)
+MessageBox s
+//RGB单色差色识别
+s = dm.Ocr(0,0,2000,2000,"9f2e3f-030303",1.0)
+MessageBox s
+//RGB多色识别(最多支持10种,每种颜色用"|"分割)
+s = dm.Ocr(0,0,2000,2000,"9f2e3f-030303|2d3f2f-000000|3f9e4d-100000",1.0)
+MessageBox s
+//HSV多色识别(最多支持10种,每种颜色用"|"分割)
+s = dm.Ocr(0,0,2000,2000,"20.30.40-0.0.0|30.40.50-0.0.0",1.0)
+MessageBox s
+//灰度多色识别(最多支持10种,每种颜色用"|"分割)
+s = dm.Ocr(0,0,2000,2000,"#40-0|#70-10",1.0)
+MessageBox s
+//识别后,每行字符串用指定字符分割
+比如用"|"字符分割
+s = dm.Ocr(0,0,2000,2000,"9f2e3f-000000,|",1.0)
+MessageBox s
+//比如用回车换行分割
+s = dm.Ocr(0,0,2000,2000,"9f2e3f-000000,"+vbcrlf,1.0)
+MessageBox s
+//背景色识别
+//比如要识别背景色为白色,文字颜色未知的字形
+s = dm.Ocr(0,0,2000,2000,"b@ffffff-000000",1.0)
+MessageBox s
+//注: 在color_fomat最前面加上"b@"表示后面的颜色描述是针对背景色,而非字的颜色.
+]]
+function DMCenter:Ocr(x1,y1,x2,y2,color_format,sim)
+    return CPLUS.DmCenter.Ocr(x1,y1,x2,y2,color_format,sim)
+end
+
+
+
+
+--[[
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+这个函数可以返回识别到的字符串，以及每个字符的坐标.
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+color_format 字符串:颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回识别到的字符串 格式如  "字符0$x0$y0|…|字符n$xn$yn"
+示例:
+和Ocr函数相同，只是结果处理有所不同如下
+dm_ret = dm.OcrEx(0,0,2000,2000,"ffffff|000000",1.0)
+ss = split(dm_ret,"|")
+index = 0
+count = UBound(ss) + 1
+Do While index < count
+   TracePrint ss(index)
+   sss = split(ss(index),"$")
+   ocr_s = int(sss(0))
+   x = int(sss(1))
+   y = int(sss(2))
+   TracePrint ocr_s & ","&x&","&y
+   index = index+1
+Loop
+注: OcrEx不再像Ocr一样,支持换行分割了.
+]]
+function DMCenter:OcrEx(x1,y1,x2,y2,color_format,sim)
+    return CPLUS.DmCenter.OcrEx(x1,y1,x2,y2,color_format,sim)
+end
+
+
+
+
+--[[
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+这个函数可以返回识别到的字符串，以及每个字符的坐标.这个同OcrEx,另一种返回形式.
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+color_format 字符串:颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回识别到的字符串 格式如  "识别到的信息|x0,y0|…|xn,yn"
+示例:
+和Ocr函数相同，只是结果处理有所不同如下
+ss = dm.OcrExOne(0,0,2000,2000,"ffffff|000000",1.0)
+ss = split(ss,"|")
+MessageBox "识别到的字符串:"&ss(0)
+ss_len = len(ss(0))
+for i = 1 to ss_len 
+    MessageBox "第("&i&")的坐标是"&ss(i)
+next
+]]
+function DMCenter:OcrExOne(x1,y1,x2,y2,color_format,sim)
+    return CPLUS.DmCenter.OcrExOne(x1,y1,x2,y2,color_format,sim)
+end
+
+
+
+
+--[[
+识别位图中区域(x1,y1,x2,y2)的文字
+x1 整形数:区域的左上X坐标
+y1 整形数:区域的左上Y坐标
+x2 整形数:区域的右下X坐标
+y2 整形数:区域的右下Y坐标
+pic_name 字符串:图片文件名
+color_format 字符串:颜色格式串.注意，RGB和HSV,以及灰度格式都支持.
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+字符串:
+返回识别到的字符串
+示例:
+s = dm.OcrInFile(0,0,2000,2000,"test.bmp","000000-000000",1.0)
+MessageBox s
+]]
+function DMCenter:OcrInFile(x1, y1, x2, y2, pic_name, color_format, sim)
+    return CPLUS.DmCenter.OcrInFile(x1, y1, x2, y2, pic_name, color_format, sim)
+end
+
+
+
+
+
+--[[
+保存指定的字库到指定的文件中.
+index 整形数:字库索引序号 取值为0-99对应100个字库
+file 字符串:文件名
+
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm.SetPath "c:\test_game"
+dm.AddDict 0,"FFF00A7D49292524A7D402805FFC$回$0.0.54$11"
+dm.AddDict 0,"3F0020087FF08270B9A108268708808$收$0.0.43$11"
+dm.AddDict 0,"2055C98617420807C097F222447C800$站$0.0.44$11"
+dm.SaveDict 0,"test.txt"
+]]
+function DMCenter:SaveDict(index,file)
+    return CPLUS.DmCenter.SaveDict(index,file) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在不使用字库进行词组识别前,可设定文字的列距,默认列距是1
+col_gap 整形数:文字列距
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetColGapNoDict(3)  
+]]
+function DMCenter:SetColGapNoDict(col_gap)
+    return CPLUS.DmCenter.SetColGapNoDict(col_gap) == 1
+end
+
+
+
+
+--[[
+设置字库文件
+index 整形数:字库的序号,取值为0-99,目前最多支持100个字库
+file 字符串:字库文件名
+返回值:
+整形数:
+0:失败
+1:成功
+示例
+dm_ret = dm.SetDict(0,"test.txt")
+注: 此函数速度很慢，全局初始化时调用一次即可，切换字库用UseDict
+]]
+function DMCenter:SetDict(index,file)
+    return CPLUS.DmCenter.SetDict(index,file) == 1
+end
+
+
+
+
+
+--[[
+从内存中设置字库.
+index 整形数:字库的序号,取值为0-99,目前最多支持100个字库
+addr 整形数: 数据地址
+size 整形数: 字库长度
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetDictMem(0,234324,1000)
+注: 此函数速度很慢，全局初始化时调用一次即可，切换字库用UseDict
+另外，此函数不支持加密的内存字库.
+]]
+function DMCenter:SetDictMem(index,addr,size)
+    assert(false,"涉及到指针，暂无实现")
+end
+
+
+--[[
+设置字库的密码,在SetDict前调用,目前的设计是,所有字库通用一个密码.
+pwd 字符串:字库密码
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetDictPwd("1234")
+注意:如果使用了多字库,所有字库的密码必须一样. 此函数必须在SetDict之前调用,否则会解密失败.
+]]
+function DMCenter:SetDictPwd(pwd)
+    return CPLUS.DmCenter.SetDictPwd(pwd) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在使用文字识别功能前，设定是否开启精准识别
+exact_ocr 整形数: 0 表示关闭精准识别
+            1 开启精准识别
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+// 开启精准识别
+dm_ret = dm.SetExactOcr(1)
+注意: 精准识别开启后，行间距和列间距会对识别结果造成较大影响，可以在工具中进行测试.
+]]
+function DMCenter:SetExactOcr(exact_ocr)
+    return CPLUS.DmCenter.SetExactOcr(exact_ocr) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在识别前,如果待识别区域有多行文字,可以设定列间距,默认的列间距是0,
+如果根据情况设定,可以提高识别精度。一般不用设定。
+min_col_gap 整形数:最小列间距
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetMinColGap(1)
+注意：此设置如果不为0,那么将不能识别连体字 慎用.
+]]
+function DMCenter:SetMinColGap(min_col_gap)
+    return CPLUS.DmCenter.SetMinColGap(min_col_gap) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在识别前,如果待识别区域有多行文字,可以设定行间距,默认的行间距是1,
+如果根据情况设定,可以提高识别精度。一般不用设定
+min_row_gap 整形数:最小行间距
+
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetMinRowGap(2)
+]]
+function DMCenter:SetMinRowGap(min_row_gap)
+    return CPLUS.DmCenter.SetMinRowGap(min_row_gap) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在不使用字库进行词组识别前,可设定文字的行距,默认行距是1
+row_gap 整形数:文字行距
+
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetRowGapNoDict(3)
+]]
+function DMCenter:SetRowGapNoDict(row_gap)
+    return CPLUS.DmCenter.SetRowGapNoDict(row_gap) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在识别词组前,可设定词组间的间隔,默认的词组间隔是5
+word_gap 整形数:单词间距
+返回值:
+整形数:
+0:失败
+1:成功
+
+示例:
+dm_ret = dm.SetWordGap(5)
+]]
+function DMCenter:SetWordGap(word_gap)
+    return CPLUS.DmCenter.SetWordGap(word_gap) == 1
+end
+
+
+
+
+
+--[[
+高级用户使用,在不使用字库进行词组识别前,可设定词组间的间隔,默认的词组间隔是5
+word_gap 整形数:单词间距
+
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetWordGapNoDict(1)
+]]
+function DMCenter:SetWordGapNoDict(word_gap)
+    return CPLUS.DmCenter.SetWordGapNoDict(word_gap) == 1
+end
+
+
+
+
+
+
+--[[
+高级用户使用,在识别词组前,可设定文字的平均行高,默认的词组行高是10
+line_height 整形数:行高
+
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetWordLineHeight(15)
+]]
+function DMCenter:SetWordLineHeight(line_height)
+    return CPLUS.DmCenter.SetWordLineHeight(line_height) == 1
+end
+
+
+
+
+--[[
+高级用户使用,在不使用字库进行词组识别前,可设定文字的平均行高,默认的词组行高是10
+line_height 整形数:行高
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.SetWordLineHeightNoDict(15)
+]]
+function DMCenter:SetWordLineHeightNoDict(line_height)
+    return CPLUS.DmCenter.SetWordLineHeightNoDict(line_height) == 1
+end
+
+
+
+
+
+--[[
+表示使用哪个字库文件进行识别(index范围:0-99)
+设置之后，永久生效，除非再次设定
+index 整形数:字库编号(0-99)
+返回值:
+整形数:
+0:失败
+1:成功
+示例:
+dm_ret = dm.UseDict(1)
+ss = dm.Ocr(0,0,2000,2000,"FFFFFF-000000",1.0)
+dm_ret = dm.UseDict(0)
+]]
+function DMCenter:UseDict(index)
+    return CPLUS.DmCenter.UseDict(index) == 1
+end
+
+
+-------------------------基本设置-----------------------------------------
+
 function DMCenter:XXXXXX()
     return CPLUS.DmCenter.XXXXX() == 1
 end
