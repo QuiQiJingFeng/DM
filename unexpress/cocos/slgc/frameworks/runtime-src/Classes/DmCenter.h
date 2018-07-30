@@ -14,9 +14,9 @@ class DmCenter {
 public:
 	~DmCenter(){};
 	static DmCenter* getInstance();
-	//×¢²áµ÷ÓÃ
+	//æ³¨å†Œè°ƒç”¨,éœ€è¦å…ˆæ‰‹åŠ¨è¿è¡Œè„šæœ¬æ³¨å†Œåˆ°æ³¨å†Œè¡¨ä¸­
 	bool registerCall();
-	//·Ç×¢²áµ÷ÓÃ
+	//å…æ³¨å†Œè°ƒç”¨
 	bool unregisterCall();
 	inline Idmsoft* getDm(){ return __dm; };
 private:
@@ -29,7 +29,7 @@ public:
 
 	void registerFunc(){
 
-			// µ¼ÈëLua
+			// ç»‘å®šåˆ°Lua
 			REG_OBJ_FUNC(DmCenter, Ver)
 
 			REG_OBJ_FUNC(DmCenter, SetPath)
@@ -812,7 +812,7 @@ public:
 
 	}
 
-	// µ¼ÈëLua
+	// ï¿½ï¿½ï¿½ï¿½Lua
 	FValue Ver(FValueVector vector);
 
 	FValue SetPath(FValueVector vector);
@@ -1598,6 +1598,6 @@ public:
 #endif  // __APP_DELEGATE_H__
 
 /*
-	´íÎó1:
-	#import ²»Ö§³Ö /MP,ÄÇÃ´Ñ¡ÖĞ#includeÕâ¸öÍ·ÎÄ¼şµÄcpp,ÓÒ¼üÊôĞÔ,C/C++,½«¶à´¦ÀíÆ÷¹Øµô¼´¿É
+	ï¿½ï¿½ï¿½ï¿½1:
+	#import ï¿½ï¿½Ö§ï¿½ï¿½ /MP,ï¿½ï¿½Ã´Ñ¡ï¿½ï¿½#includeï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½cpp,ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½,C/C++,ï¿½ï¿½ï¿½à´¦ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½
 */

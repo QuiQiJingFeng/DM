@@ -1,6 +1,5 @@
 
 #include "DmCenter.h"
-//import Óï¾äÖ´ÐÐÍê³ÉÖ®ºó»áÉú³ÉÏàÓ¦µÄtlh
 typedef long(*dllFunc)(_bstr_t m, long s);
 
 DmCenter * DmCenter::__instance = nullptr;
@@ -16,26 +15,28 @@ DmCenter* DmCenter::getInstance(){
 	return __instance;
 }
 
-//×¢²áµ÷ÓÃ
 bool DmCenter::registerCall(){
-	//½«´óÄ®×¢²áµ½×¢²á±íÖ®ºó(ÊÖ¶¯×¢²á)
+	//åˆå§‹åŒ–COMç»„ä»¶
 	CoInitialize(NULL);
 	CLSID clsid;
-	//´Ó×¢²á±íÖÐÕÒµ½´óÄ®
+	//ä»Žæ³¨å†Œè¡¨ä¸­æ‰¾åˆ°åä¸º dm.dmsoftçš„é¡¹
 	CLSIDFromProgID(OLESTR("dm.dmsoft"), &clsid);
 	__dm = nullptr;
+	//æ ¹æ®æ‰¾åˆ°çš„é¡¹ åˆ›å»ºdmçš„å®žä¾‹
 	CoCreateInstance(clsid, NULL, CLSCTX_INPROC_SERVER, __uuidof(Idmsoft), (LPVOID*)&__dm);
 	return __dm == nullptr;
 }
-//·Ç×¢²áµ÷ÓÃ
+//å…æ³¨å†Œè°ƒç”¨
 bool DmCenter::unregisterCall(){
 	typedef  HRESULT(__stdcall * PDllGetClassObject)(REFCLSID, REFIID, LPVOID*);
 	PDllGetClassObject  pDllGetClassObject = NULL;
+	//åŠ è½½dllåº“
 	HMODULE  h = ::LoadLibrary(L"dm.dll");
 	if (h == 0)
 	{
 		return  false;
 	}
+	//è°ƒç”¨dllåº“çš„DllGetClassObjectæ–¹æ³•èŽ·å–å¤§æ¼ æŒ‡é’ˆ
 	pDllGetClassObject = (PDllGetClassObject)GetProcAddress(h, "DllGetClassObject");
 	if (pDllGetClassObject == NULL)
 	{
@@ -70,9 +71,9 @@ FValue DmCenter::ConvertToFValue(VARIANT var){
 	FValue ret;
 	switch (var.vt)
 	{
-	case VT_BSTR://×Ö·û´®
-	case VT_LPSTR://×Ö·û´®
-	case VT_LPWSTR://×Ö·û´®
+	case VT_BSTR:
+	case VT_LPSTR:
+	case VT_LPWSTR:
 		ret = (_bstr_t)var;
 		break;
 
@@ -81,35 +82,35 @@ FValue DmCenter::ConvertToFValue(VARIANT var){
 		ret = var.bVal;
 		break;
 
-	case VT_I2://¶ÌÕûÐÍ
+	case VT_I2:
 		ret = var.iVal;
 		break;
 
-	case VT_UI2://ÎÞ·ûºÅ¶ÌÕûÐÍ
+	case VT_UI2:
 		ret = var.uiVal;
 		break;
 
-	case VT_INT://ÕûÐÍ
+	case VT_INT:
 		ret = var.intVal;
 		break;
 
-	case VT_I4: //ÕûÐÍ
+	case VT_I4: 
 		ret = var.lVal;
 		break;
 
-	case VT_I8: //³¤ÕûÐÍ
+	case VT_I8:
 		ret = var.bVal;
 		break;
 
-	case VT_UINT://ÎÞ·ûºÅÕûÐÍ
+	case VT_UINT:
 		ret = var.uintVal;
 		break;
 
-	case VT_UI4: //ÎÞ·ûºÅÕûÐÍ
+	case VT_UI4: 
 		ret = (unsigned int)var.ulVal;
 		break;
 
-	case VT_UI8: //ÎÞ·ûºÅ³¤ÕûÐÍ
+	case VT_UI8: 
 		ret = (unsigned int)var.ulVal;
 		break;
 
@@ -117,58 +118,57 @@ FValue DmCenter::ConvertToFValue(VARIANT var){
 		ret = (unsigned int)var.byref;
 		break;
 
-	case VT_R4://¸¡µãÐÍ
+	case VT_R4:
 		ret = var.fltVal;
 		break;
 
-	case VT_R8://Ë«¾«¶ÈÐÍ
+	case VT_R8:
 		ret = var.dblVal;
 		break;
 
-	case VT_DECIMAL: //Ð¡Êý
-
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+	case VT_DECIMAL: 
+		assert(false, "UNKOWN TYPE");
 		break;
 
 	case VT_CY:
 	{
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+		assert(false, "UNKOWN TYPE");
 	}
 		break;
 
 	case VT_BLOB:
 	case VT_BLOB_OBJECT:
 	case 0x2011:
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+		assert(false, "UNKOWN TYPE");
 		break;
 
-	case VT_BOOL://²¼¶ûÐÍ
+	case VT_BOOL:
 		ret = var.boolVal;
 		break;
 
-	case VT_DATE: //ÈÕÆÚÐÍ
+	case VT_DATE:
 	{
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+		assert(false, "UNKOWN TYPE");
 	}
 		break;
 
 	case VT_NULL://NULLÖµ
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+		assert(false, "UNKOWN TYPE");
 		break;
 
-	case VT_EMPTY://¿Õ
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+	case VT_EMPTY:
+		assert(false, "UNKOWN TYPE");
 		break;
 
-	case VT_UNKNOWN://Î´ÖªÀàÐÍ
+	case VT_UNKNOWN:
 	default:
-		assert(false, "ERROR Ã»ÓÐÊµÏÖ");
+		assert(false, "UNKOWN TYPE");
 		break;
 
 	}
 	return ret;
 }
-// µ¼ÈëLua
+// å¯¼å…¥åˆ°Lua
 FValue DmCenter::Ver(FValueVector vector){
 	_bstr_t ret =__dm->Ver();
 	return FValue(ret);
@@ -185,13 +185,13 @@ FValue DmCenter::Ocr(FValueVector vector){
 	long y1 = vector[1].asDouble();
 	long x2 = vector[2].asDouble();
 	long y2 = vector[3].asDouble();
-	const char*color = vector[4].asString().c_str();
+	string color = vector[4].asString();
 	double sim = vector[5].asDouble();
-	return FValue(__dm->Ocr(x1, y1, x2, y2, color, sim));
+	return FValue(__dm->Ocr(x1, y1, x2, y2, color.c_str(), sim));
 }
 /*
 	paramater:
-	x1, y1, x2, y2, str, color, sim
+	x1, y1, x2, y2, str, color.c_str(), sim
 	return
 	{x=v,y=v}
 */
@@ -201,11 +201,11 @@ FValue DmCenter::FindStr(FValueVector vector){
 	long x2 = vector[2].asDouble();
 	long y2 = vector[3].asDouble();
 	const char*str = vector[4].asString().c_str();
-	const char*color = vector[5].asString().c_str();
+	string color = vector[5].asString();
 	double sim = vector[6].asDouble();
 
 	VARIANT x, y;
-	__dm->FindStr(x1, y1, x2, y2, str, color, sim, &x, &y);
+	__dm->FindStr(x1, y1, x2, y2, str, color.c_str(), sim, &x, &y);
 
 	FValueMap map;
 	map["x"] = ConvertToFValue(x);
@@ -247,51 +247,60 @@ FValue DmCenter::OcrInFile(FValueVector vector){
 }
 
 FValue DmCenter::Capture(FValueVector vector){
-	return FValue();
+	
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string file = vector[4].asString();
+	return FValue(__dm->Capture(x1, y1, x2, y2, file.c_str()));
 }
 
 FValue DmCenter::KeyPress(FValueVector vector){
-	return FValue();
+	long code = vector[0].asDouble();
+	return FValue(__dm->KeyPress(code));
 }
 
 FValue DmCenter::KeyDown(FValueVector vector){
-	return FValue();
+	long code = vector[0].asDouble();
+	return FValue(__dm->KeyDown(code));
 }
 
 FValue DmCenter::KeyUp(FValueVector vector){
-	return FValue();
+	long code = vector[0].asDouble();
+	return FValue(__dm->KeyUp(code));
 }
 
 FValue DmCenter::LeftClick(FValueVector vector){
-	return FValue();
+	return FValue(__dm->LeftClick());
 }
 
 FValue DmCenter::RightClick(FValueVector vector){
-	return FValue();
+	return FValue(__dm->RightClick());
 }
 
 FValue DmCenter::MiddleClick(FValueVector vector){
-	return FValue();
+	return FValue(__dm->MiddleClick());
 }
 
 FValue DmCenter::LeftDoubleClick(FValueVector vector){
-	return FValue();
+	return FValue(__dm->LeftDoubleClick());
 }
 
 FValue DmCenter::LeftDown(FValueVector vector){
-	return FValue();
+	return FValue(__dm->LeftDown());
 }
 
 FValue DmCenter::LeftUp(FValueVector vector){
-	return FValue();
+	return FValue(__dm->LeftUp());
 }
 
 FValue DmCenter::RightDown(FValueVector vector){
-	return FValue();
+	return FValue(__dm->RightDown());
 }
 
 FValue DmCenter::RightUp(FValueVector vector){
-	return FValue();
+	return FValue(__dm->RightUp());
 }
 
 FValue DmCenter::MoveTo(FValueVector vector){
@@ -302,23 +311,31 @@ FValue DmCenter::MoveTo(FValueVector vector){
 
 
 FValue DmCenter::MoveR(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	return FValue(__dm->MoveR(x,y));
 }
 
 FValue DmCenter::GetColor(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	return FValue(__dm->GetColor(x,y));
 }
 
 FValue DmCenter::GetColorBGR(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	return FValue(__dm->GetColorBGR(x,y));
 }
 
 FValue DmCenter::RGB2BGR(FValueVector vector){
-	return FValue();
+	string rgb_color = vector[0].asString();
+	return FValue(__dm->RGB2BGR(rgb_color.c_str()));
 }
 
 FValue DmCenter::BGR2RGB(FValueVector vector){
-	return FValue();
+	string color = vector[0].asString();
+	return FValue(__dm->BGR2RGB(color.c_str()));
 }
 
 FValue DmCenter::UnBindWindow(FValueVector vector){
@@ -326,7 +343,11 @@ FValue DmCenter::UnBindWindow(FValueVector vector){
 }
 
 FValue DmCenter::CmpColor(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	string color = vector[2].asString();
+	double sim = vector[3].asDouble();
+	return FValue(__dm-> CmpColor(x, y, color.c_str(), sim));
 }
 
 FValue DmCenter::ClientToScreen(FValueVector vector){
@@ -350,11 +371,37 @@ FValue DmCenter::SetMinColGap(FValueVector vector){
 }
 
 FValue DmCenter::FindColor(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+	VARIANT x, y;
+	int ret = __dm->FindColor(x1, y1, x2, y2, color.c_str(), sim, dir, &x, &y);
+	FValueMap map;
+	if(ret == 1){
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}else{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+	
+	return FValue(map);
 }
 
 FValue DmCenter::FindColorEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+	
+	return FValue(__dm->FindColorEx(x1, y1, x2, y2, color.c_str(), sim, dir));
 }
 
 FValue DmCenter::SetWordLineHeight(FValueVector vector){
@@ -414,15 +461,26 @@ FValue DmCenter::MoveWindow(FValueVector vector){
 }
 
 FValue DmCenter::GetColorHSV(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	return FValue(__dm->GetColorHSV(x,y));
 }
 
 FValue DmCenter::GetAveRGB(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+
+	return FValue(__dm->GetAveRGB(x1, y1, x2, y2));
 }
 
 FValue DmCenter::GetAveHSV(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	return FValue(__dm->GetAveHSV(x1,y1,x2,y2));
 }
 
 FValue DmCenter::GetForegroundWindow(FValueVector vector){
@@ -574,11 +632,13 @@ FValue DmCenter::FaqGetSize(FValueVector vector){
 }
 
 FValue DmCenter::LoadPic(FValueVector vector){
-	return FValue();
+	string pic = vector[0].asString();
+	return FValue(__dm->LoadPic(pic.c_str()));
 }
 
 FValue DmCenter::FreePic(FValueVector vector){
-	return FValue();
+	string pic = vector[0].asString();
+	return FValue(__dm->FreePic(pic.c_str()));
 }
 
 FValue DmCenter::GetScreenData(FValueVector vector){
@@ -590,19 +650,23 @@ FValue DmCenter::FreeScreenData(FValueVector vector){
 }
 
 FValue DmCenter::WheelUp(FValueVector vector){
-	return FValue();
+	return FValue(__dm->WheelUp());
 }
 
 FValue DmCenter::WheelDown(FValueVector vector){
-	return FValue();
+	return FValue(__dm->WheelDown());
 }
 
 FValue DmCenter::SetMouseDelay(FValueVector vector){
-	return FValue();
+	string type = vector[0].asString();
+	long delay = vector[1].asDouble();
+	return FValue(__dm->SetMouseDelay(type.c_str(), delay));
 }
 
 FValue DmCenter::SetKeypadDelay(FValueVector vector){
-	return FValue();
+	string type = vector[0].asString();
+	long delay = vector[1].asDouble();
+	return FValue(__dm->SetKeypadDelay(type.c_str(), delay));
 }
 
 FValue DmCenter::GetEnv(FValueVector vector){
@@ -630,11 +694,41 @@ FValue DmCenter::SetDict(FValueVector vector){
 }
 
 FValue DmCenter::FindPic(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_name = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	VARIANT x, y;
+	int ret = __dm->FindPic(x1, y1, x2, y2, pic_name.c_str(), delta_color.c_str(), sim, dir, &x,&y);
+	FValueMap map;
+	if (ret != -1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindPicEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_name = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	return FValue(__dm->FindPicEx(x1, y1, x2, y2, pic_name.c_str(), delta_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::SetClientSize(FValueVector vector){
@@ -674,11 +768,16 @@ FValue DmCenter::GetModuleBaseAddr(FValueVector vector){
 }
 
 FValue DmCenter::MoveToEx(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	long w = vector[2].asDouble();
+	long h = vector[3].asDouble();
+	return FValue(__dm->MoveToEx(x, y, w, h));
 }
 
 FValue DmCenter::MatchPicName(FValueVector vector){
-	return FValue();
+	string pic_name = vector[0].asString();
+	return FValue(__dm->MatchPicName(pic_name.c_str()));
 }
 
 FValue DmCenter::AddDict(FValueVector vector){
@@ -722,11 +821,41 @@ FValue DmCenter::AsmCall(FValueVector vector){
 }
 
 FValue DmCenter::FindMultiColor(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string first_color = vector[4].asString();
+	string offset_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	VARIANT x, y;
+	int ret = __dm->FindMultiColor(x1, y1, x2, y2, first_color.c_str(), offset_color.c_str(), sim, dir, &x, &y);																					
+	FValueMap map;
+	if (ret == 1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindMultiColorEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string first_color = vector[4].asString();
+	string offset_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	return FValue(__dm->FindMultiColorEx(x1, y1, x2, y2, first_color.c_str(), offset_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::Assemble(FValueVector vector){
@@ -754,7 +883,8 @@ FValue DmCenter::FindData(FValueVector vector){
 }
 
 FValue DmCenter::SetPicPwd(FValueVector vector){
-	return FValue();
+	string pwd = vector[0].asString();
+	return FValue(__dm->SetPicPwd(pwd.c_str()));
 }
 
 FValue DmCenter::Log(FValueVector vector){
@@ -766,15 +896,40 @@ FValue DmCenter::FindStrE(FValueVector vector){
 }
 
 FValue DmCenter::FindColorE(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+
+	return FValue(__dm->FindColorE(x1, y1, x2, y2, color.c_str(), sim, dir));
 }
 
 FValue DmCenter::FindPicE(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_name = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	return FValue(__dm->FindPicE(x1, y1, x2, y2, pic_name.c_str(), delta_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::FindMultiColorE(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string first_color = vector[4].asString();
+	string offset_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+
+	return FValue(__dm->FindMultiColorE(x1, y1, x2, y2, first_color.c_str(), offset_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::SetExactOcr(FValueVector vector){
@@ -906,7 +1061,13 @@ FValue DmCenter::FetchWord(FValueVector vector){
 }
 
 FValue DmCenter::CaptureJpg(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string file = vector[4].asString();
+	long quality = vector[5].asDouble();
+	return FValue(__dm->CaptureJpg(x1, y1, x2, y2, file.c_str(), quality));
 }
 
 FValue DmCenter::FindStrWithFont(FValueVector vector){
@@ -942,7 +1103,9 @@ FValue DmCenter::LockInput(FValueVector vector){
 }
 
 FValue DmCenter::GetPicSize(FValueVector vector){
-	return FValue();
+	string pic_name = vector[0].asString();
+
+	return FValue(__dm->GetPicSize(pic_name.c_str()));
 }
 
 FValue DmCenter::GetID(FValueVector vector){
@@ -950,15 +1113,30 @@ FValue DmCenter::GetID(FValueVector vector){
 }
 
 FValue DmCenter::CapturePng(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string file = vector[4].asString();
+	return FValue(__dm->CapturePng(x1, y1, x2, y2, file.c_str()));
 }
 
 FValue DmCenter::CaptureGif(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string file = vector[4].asString();
+	long delay = vector[5].asDouble();
+	long time = vector[6].asDouble();
+
+	return FValue(__dm->CaptureGif(x1, y1, x2, y2, file.c_str(), delay, time));
 }
 
 FValue DmCenter::ImageToBmp(FValueVector vector){
-	return FValue();
+	string pic_name = vector[0].asString();
+	string bmp_name = vector[1].asString();
+	return FValue(__dm->ImageToBmp(pic_name.c_str(), bmp_name.c_str()));
 }
 
 FValue DmCenter::FindStrFast(FValueVector vector){
@@ -974,11 +1152,13 @@ FValue DmCenter::FindStrFastE(FValueVector vector){
 }
 
 FValue DmCenter::EnableDisplayDebug(FValueVector vector){
-	return FValue();
+	long enable_debug = vector[0].asDouble();
+	return FValue(__dm->EnableDisplayDebug(enable_debug));
 }
 
 FValue DmCenter::CapturePre(FValueVector vector){
-	return FValue();
+	string file = vector[0].asString();
+	return FValue(__dm->CapturePre(file.c_str()));
 }
 
 FValue DmCenter::RegEx(FValueVector vector){
@@ -1006,7 +1186,13 @@ FValue DmCenter::Is64Bit(FValueVector vector){
 }
 
 FValue DmCenter::GetColorNum(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[6].asDouble();
+	return FValue(__dm->GetColorNum(x1, y1, x2, y2, color.c_str(), sim));
 }
 
 FValue DmCenter::EnumWindowByProcess(FValueVector vector){
@@ -1026,7 +1212,8 @@ FValue DmCenter::GetNetTime(FValueVector vector){
 }
 
 FValue DmCenter::EnableGetColorByCapture(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableGetColorByCapture(enable));
 }
 
 FValue DmCenter::CheckUAC(FValueVector vector){
@@ -1090,19 +1277,62 @@ FValue DmCenter::SortPosDistance(FValueVector vector){
 }
 
 FValue DmCenter::FindPicMem(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_info = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+	VARIANT x, y;
+	int ret = __dm->FindPicMem(x1, y1, x2, y2, pic_info.c_str(), delta_color.c_str(), sim, dir, &x, &y);
+	FValueMap map;
+	if (ret != -1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindPicMemEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_info = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+
+	return FValue(__dm->FindPicMemEx(x1, y1, x2, y2, pic_info.c_str(), delta_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::FindPicMemE(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_info = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+ 
+	return FValue(__dm->FindPicMemE(x1, y1, x2, y2, pic_info.c_str(), delta_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::AppendPicAddr(FValueVector vector){
-	return FValue();
+	string pic_info = vector[0].asString();
+	long addr = vector[1].asDouble();
+	long size = vector[2].asDouble();
+	return FValue(__dm->AppendPicAddr(pic_info.c_str(), addr, size));
 }
 
 FValue DmCenter::WriteFile(FValueVector vector){
@@ -1138,7 +1368,8 @@ FValue DmCenter::DecodeFile(FValueVector vector){
 }
 
 FValue DmCenter::KeyDownChar(FValueVector vector){
-	return FValue();
+	string key = vector[0].asString();
+	return FValue(__dm->KeyDownChar(key.c_str()));
 }
 
 FValue DmCenter::KeyUpChar(FValueVector vector){
@@ -1146,11 +1377,13 @@ FValue DmCenter::KeyUpChar(FValueVector vector){
 }
 
 FValue DmCenter::KeyPressChar(FValueVector vector){
-	return FValue();
+	string key = vector[0].asString();
+	return FValue(__dm->KeyDownChar(key.c_str()));
 }
 
 FValue DmCenter::KeyPressStr(FValueVector vector){
-	return FValue();
+	string content = vector[0].asString();
+	return FValue(__dm->KeyDownChar(content.c_str()));
 }
 
 FValue DmCenter::EnableKeypadPatch(FValueVector vector){
@@ -1238,15 +1471,53 @@ FValue DmCenter::SetMemoryHwndAsProcessId(FValueVector vector){
 }
 
 FValue DmCenter::FindShape(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string offset_color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+
+	VARIANT x, y;
+	int ret = __dm->FindShape(x1, y1, x2, y2, offset_color.c_str(), sim, dir, &x, &y);
+	FValueMap map;
+	if (ret == 1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindShapeE(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string offset_color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+
+	return FValue(__dm->FindShapeE(x1, y1, x2, y2, offset_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::FindShapeEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string offset_color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long dir = vector[6].asDouble();
+
+	return FValue(__dm->FindShapeEx(x1, y1, x2, y2, offset_color.c_str(), sim, dir));
 }
 
 FValue DmCenter::FindStrS(FValueVector vector){
@@ -1266,10 +1537,46 @@ FValue DmCenter::FindStrFastExS(FValueVector vector){
 }
 
 FValue DmCenter::FindPicS(FValueVector vector){
-	return FValue();
+	
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_name = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+
+	VARIANT x, y;
+	string ret = __dm->FindPicS(x1, y1, x2, y2, pic_name.c_str(), delta_color.c_str(), sim, dir, &x, &y);
+	FValueMap map;
+	if (ret != "")
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+		map["pic"] = FValue(ret);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+		map["pic"] = FValue(ret);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindPicExS(FValueVector vector){
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string pic_name = vector[4].asString();
+	string delta_color = vector[5].asString();
+	double sim = vector[6].asDouble();
+	long dir = vector[7].asDouble();
+
+	return FValue(__dm->FindPicExS(x1, y1, x2, y2, pic_name.c_str(), delta_color.c_str(), sim, dir));
 	return FValue();
 }
 
@@ -1330,7 +1637,8 @@ FValue DmCenter::EnableBind(FValueVector vector){
 }
 
 FValue DmCenter::SetSimMode(FValueVector vector){
-	return FValue();
+	long mode = vector[0].asDouble();
+	return FValue(__dm->SetSimMode(mode));
 }
 
 FValue DmCenter::LockMouseRect(FValueVector vector){
@@ -1342,7 +1650,13 @@ FValue DmCenter::SendPaste(FValueVector vector){
 }
 
 FValue DmCenter::IsDisplayDead(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	long t = vector[4].asDouble();
+
+	return FValue(__dm->IsDisplayDead(x1, y1, x2, y2, t));
 }
 
 FValue DmCenter::GetKeyState(FValueVector vector){
@@ -1382,7 +1696,9 @@ FValue DmCenter::ReadFile(FValueVector vector){
 }
 
 FValue DmCenter::WaitKey(FValueVector vector){
-	return FValue();
+	long code = vector[0].asDouble();
+	long time_out = vector[1].asDouble();
+	return FValue(__dm->WaitKey(code, time_out));
 }
 
 FValue DmCenter::DeleteIni(FValueVector vector){
@@ -1450,7 +1766,14 @@ FValue DmCenter::SetEnumWindowDelay(FValueVector vector){
 }
 
 FValue DmCenter::FindMulColor(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+
+	return FValue(__dm->FindMulColor(x1, y1, x2, y2, color.c_str(), sim));
 }
 
 FValue DmCenter::GetDict(FValueVector vector){
@@ -1550,11 +1873,43 @@ FValue DmCenter::Delays(FValueVector vector){
 }
 
 FValue DmCenter::FindColorBlock(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long count = vector[6].asDouble();
+	long width = vector[7].asDouble();
+	long height = vector[8].asDouble();
+	VARIANT x, y;
+	int ret = __dm->FindColorBlock(x1, y1, x2, y2, color.c_str(), sim, count, width, height, & x, &y);
+	FValueMap map;
+	if (ret == 1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::FindColorBlockEx(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	string color = vector[4].asString();
+	double sim = vector[5].asDouble();
+	long count = vector[6].asDouble();
+	long width = vector[7].asDouble();
+	long height = vector[8].asDouble();
+	return FValue(__dm->FindColorBlockEx(x1, y1, x2, y2, color.c_str(), sim, count, width, height));
 }
 
 FValue DmCenter::OpenProcess(FValueVector vector){
@@ -1626,11 +1981,11 @@ FValue DmCenter::LoadPicByte(FValueVector vector){
 }
 
 FValue DmCenter::MiddleDown(FValueVector vector){
-	return FValue();
+	return FValue(__dm->MiddleDown());
 }
 
 FValue DmCenter::MiddleUp(FValueVector vector){
-	return FValue();
+	return FValue(__dm->MiddleUp());
 }
 
 FValue DmCenter::FaqCaptureString(FValueVector vector){
@@ -1642,7 +1997,8 @@ FValue DmCenter::VirtualProtectEx(FValueVector vector){
 }
 
 FValue DmCenter::SetMouseSpeed(FValueVector vector){
-	return FValue();
+	long speed = vector[0].asDouble();
+	return FValue(__dm-> SetMouseSpeed(speed));
 }
 
 FValue DmCenter::GetMouseSpeed(FValueVector vector){
@@ -1654,7 +2010,10 @@ FValue DmCenter::EnableMouseAccuracy(FValueVector vector){
 }
 
 FValue DmCenter::SetExcludeRegion(FValueVector vector){
-	return FValue();
+	long mode = vector[0].asDouble();
+	string info = vector[1].asString();
+
+	return FValue(__dm->SetExcludeRegion(mode,info.c_str()));
 }
 
 FValue DmCenter::EnableShareDict(FValueVector vector){
