@@ -2902,148 +2902,3203 @@ end
 
 
 -------------------------基本设置-----------------------------------------
-
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+--[[
+设置是否开启或者关闭插件内部的图片缓存机制. (默认是打开).
+enable 整形数: 0 : 关闭  1 : 打开
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.EnablePicCache 0
+注: 有些时候，系统内存比较吃紧，这时候再打开内部缓存，可能会导致缓存分配在虚拟内存，这样频繁换页，反而导致图色效率下降.这时候就建议关闭图色缓存.
+所有图色缓存机制都是对本对象的，也就是说，调用图色缓存机制的函数仅仅对本对象生效. 每个对象都有一个图色缓存队列.
+]]
+function DMCenter:EnablePicCache(enable)
+    return CPLUS.DmCenter.EnablePicCache(enable) == 1
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+--[[
+获取注册在系统中的dm.dll的路径. 
+返回值:
+字符串:
+返回dm.dll所在路径
+]]
+function DMCenter:GetBasePath()
+    return CPLUS.DmCenter.GetBasePath()
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+
+--[[
+返回当前进程已经创建的dm对象个数.
+返回值:
+整形数:
+个数.
+]]
+function DMCenter:GetDmCount()
+    return CPLUS.DmCenter.GetDmCount()
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+返回当前大漠对象的ID值，这个值对于每个对象是唯一存在的。可以用来判定两个大漠对象是否一致.
+返回值:
+整形数:
+当前对象的ID值.
+]]
+function DMCenter:GetID()
+    return CPLUS.DmCenter.GetID()
 end
 
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
-end
-function DMCenter:XXXXXX()
-    return CPLUS.DmCenter.XXXXX() == 1
+
+
+--[[
+获取插件命令的最后错误
+返回值:
+
+整形数:
+返回值表示错误值。 0表示无错误.
+
+-1 : 表示你使用了绑定里的收费功能，但是没注册，无法使用.
+-2 : 使用模式0 2 时出现，因为目标窗口有保护. 常见于win7以上系统.或者有安全软件拦截插件.解决办法: 关闭所有安全软件，然后再重新尝试. 如果还不行就可以肯定是目标窗口有特殊保护. 
+-3 : 使用模式0 2 时出现，可能目标窗口有保护，也可能是异常错误. 可以尝试换绑定模式或许可以解决.
+-4 : 使用模式101 103时出现，这是异常错误.
+-5 : 使用模式101 103时出现, 这个错误的解决办法就是关闭目标窗口，重新打开再绑定即可. 也可能是运行脚本的进程没有管理员权限. 
+-6 : 被安全软件拦截。典型的是金山.360等. 如果是360关闭即可。 如果是金山，必须卸载，关闭是没用的.
+-7 -9 : 使用模式101 103时出现,异常错误. 还有可能是安全软件的问题，比如360等。尝试卸载360.
+-8 -10 : 使用模式101 103时出现, 目标进程可能有保护,也可能是插件版本过老，试试新的或许可以解决. -8可以尝试使用DmGuard中的np2盾配合.
+-11 : 使用模式101 103时出现, 目标进程有保护. 告诉我解决。
+-12 : 使用模式101 103时出现, 目标进程有保护. 告诉我解决。
+-13 : 使用模式101 103时出现, 目标进程有保护. 或者是因为上次的绑定没有解绑导致。 尝试在绑定前调用ForceUnBindWindow. 
+-14 : 可能系统缺少部分DLL,尝试安装d3d. 或者是鼠标或者键盘使用了dx.mouse.api或者dx.keypad.api，但实际系统没有插鼠标和键盘. 也有可能是图色中有dx.graphic.3d之类的,但相应的图色被占用,比如全屏D3D程序.
+-16 : 可能使用了绑定模式 0 和 101，然后可能指定了一个子窗口.导致不支持.可以换模式2或者103来尝试. 另外也可以考虑使用父窗口或者顶级窗口.来避免这个错误。还有可能是目标窗口没有正常解绑 然后再次绑定的时候.
+-17 : 模式101 103时出现. 这个是异常错误. 告诉我解决.
+-18 : 句柄无效.
+-19 : 使用模式0 11 101时出现,这是异常错误,告诉我解决.
+-20 : 使用模式101 103 时出现,说明目标进程里没有解绑，并且子绑定达到了最大. 尝试在返回这个错误时，调用ForceUnBindWindow来强制解除绑定.
+-21 : 使用模式101 103 时出现,说明目标进程里没有解绑. 尝试在返回这个错误时，调用ForceUnBindWindow来强制解除绑定.
+-22 : 使用模式0 2,绑定64位进程窗口时出现,因为安全软件拦截插件释放的EXE文件导致.
+-23 : 使用模式0 2,绑定64位进程窗口时出现,因为安全软件拦截插件释放的DLL文件导致.
+-24 : 使用模式0 2,绑定64位进程窗口时出现,因为安全软件拦截插件运行释放的EXE.
+-25 : 使用模式0 2,绑定64位进程窗口时出现,因为安全软件拦截插件运行释放的EXE.
+-26 : 使用模式0 2,绑定64位进程窗口时出现, 因为目标窗口有保护. 常见于win7以上系统.或者有安全软件拦截插件.解决办法: 关闭所有安全软件，然后再重新尝试. 如果还不行就可以肯定是目标窗口有特殊保护.
+-27 : 绑定64位进程窗口时出现，因为使用了不支持的模式，目前暂时只支持模式0 2 101 103
+-28 : 绑定32位进程窗口时出现，因为使用了不支持的模式，目前暂时只支持模式0 2 101 103
+
+-100 : 调用读写内存函数后，发现无效的窗口句柄
+-101 : 读写内存函数失败
+-200 : AsmCall失败
+示例:
+TracePrint dm.GetLastError()
+注: 此函数必须紧跟上一句函数调用，中间任何的语句调用都会改变这个值.
+]]
+function DMCenter:GetLastError()
+    return CPLUS.DmCenter.GetLastError()
 end
 
+
+
+--[[
+获取全局路径.(可用于调试)
+返回值:
+字符串:
+以字符串的形式返回当前设置的全局路径
+]]
+function DMCenter:GetPath()
+    return CPLUS.DmCenter.GetPath() 
+end
+
+
+--[[
+调用此函数来注册，从而使用插件的高级功能.推荐使用此函数.
+参数定义:
+reg_code 字符串: 注册码. (从大漠插件后台获取)
+ver_info 字符串: 版本附加信息. 可以在后台详细信息查看. 可以任意填写. 可留空. 长度不能超过20. 并且只能包含数字和字母以及小数点. 这个版本信息不是插件版本.
+返回值:
+整形数:
+-1 : 无法连接网络,(可能防火墙拦截,如果可以正常访问大漠插件网站，那就可以肯定是被防火墙拦截)
+-2 : 进程没有以管理员方式运行. (出现在win7 win8 vista 2008.建议关闭uac)
+0 : 失败 (未知错误)
+1 : 成功
+2 : 余额不足
+3 : 绑定了本机器，但是账户余额不足50元.
+4 : 注册码错误
+5 : 你的机器或者IP在黑名单列表中或者不在白名单列表中.
+6 : 非法使用插件. 
+7 : 你的帐号因为非法使用被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+77： 机器码或者IP因为非法使用，而被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+     封禁是全局的，如果使用了别人的软件导致77，也一样会导致所有注册码均无法注册。解决办法是更换IP，更换MAC.
+-8 : 版本附加信息长度超过了20
+-9 : 版本附加信息里包含了非法字母.
+空 : 这是不可能返回空的，如果出现空，那肯定是当前使用的版本不对,老的插件里没这个函数导致返回为空.最好参考文档中的标准写法,判断插件版本号.
+
+示例:
+dm_ret = dm.Reg("abcdefg","")
+if dm_ret <> 1 then
+    MessageBox "注册失败,只能使用免费功能"
+end if
+注: 简单游平台调用此函数，不会扣费.
+注册码在大漠插件后台可以查看.
+此函数每个进程调用一次即可，不需要每个DM对象都调用.
+必须保证此函数在创建完对象以后立即调用，尤其必须在绑定窗口之前调用，否则可能会出现异常.
+如果有多个进程操作同个窗口，必须保证每个进程要么都调用Reg,要么都不要调用Reg，以免出现异常.
+]]
+function DMCenter:Reg(reg_code,ver_info)
+    return CPLUS.DmCenter.Reg(reg_code,ver_info)
+end
+
+
+
+
+
+--[[
+调用此函数来注册，从而使用插件的高级功能. 可以根据指定的IP列表来注册. 新手不建议使用!
+参数定义:
+reg_code 字符串: 注册码. (从大漠插件后台获取)
+ver_info 字符串: 版本附加信息. 可以在后台详细信息查看.可留空. 长度不能超过20. 并且只能包含数字和字母以及小数点. 这个版本信息不是插件版本.
+ip 字符串: 插件注册的ip地址.可以用|来组合,依次对ip中的地址进行注册，直到成功. ip地址列表在VIP群中获取.
+返回值:
+整形数:
+-1 : 无法连接网络,(可能防火墙拦截,如果可以正常访问大漠插件网站，那就可以肯定是被防火墙拦截)
+-2 : 进程没有以管理员方式运行. (出现在win7 win8 vista 2008.建议关闭uac)
+0 : 失败 (未知错误)
+1 : 成功
+2 : 余额不足
+3 : 绑定了本机器，但是账户余额不足50元.
+4 : 注册码错误
+5 : 你的机器或者IP在黑名单列表中或者不在白名单列表中.
+6 : 非法使用插件.
+7 : 你的帐号因为非法使用被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+77： 机器码或者IP因为非法使用，而被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+     封禁是全局的，如果使用了别人的软件导致77，也一样会导致所有注册码均无法注册。解决办法是更换IP，更换MAC.
+-8 : 版本附加信息长度超过了20
+-9 : 版本附加信息里包含了非法字母.
+-10 : 非法的参数ip
+空 : 这是不可能返回空的，如果出现空，那肯定是当前使用的版本不对,老的插件里没这个函数导致返回为空.最好参考文档中的标准写法,判断插件版本号.
+示例:
+// 严重注意,这个例子的IP只是示例，实际并无效。真实IP要去VIP群里获取.
+dm_ret = dm.RegEx("abcdefg","0001","123.45.4.6|78.79.26.3")
+if dm_ret <> 1 then
+    MessageBox "注册失败,只能使用免费功能"
+end if
+注: 简单游平台调用此函数，不会扣费.
+注册码在大漠插件后台可以查看.
+此函数每个进程调用一次即可，不需要每个DM对象都调用.
+必须保证此函数在创建完对象以后立即调用，尤其必须在绑定窗口之前调用，否则可能会出现异常.
+如果有多个进程操作同个窗口，必须保证每个进程要么都调用RegEx,要么都不要调用RegEx，以免出现异常.
+]]
+function DMCenter:RegEx(reg_code,ver_info,ip)
+    return CPLUS.DmCenter.RegEx(reg_code,ver_info,ip)
+end
+
+
+
+--[[
+调用此函数来注册，从而使用插件的高级功能. 可以根据指定的IP列表来注册.
+新手不建议使用! 此函数同RegEx函数的不同在于,此函数用于注册的机器码是不带mac地址的.
+reg_code 字符串: 注册码. (从大漠插件后台获取)
+
+ver_info 字符串: 版本附加信息. 可以在后台详细信息查看.可留空. 长度不能超过20. 并且只能包含数字和字母以及小数点. 这个版本信息不是插件版本.
+
+ip 字符串: 插件注册的ip地址.可以用|来组合,依次对ip中的地址进行注册，直到成功. ip地址列表在VIP群中获取.
+
+返回值:
+
+整形数:
+-1 : 无法连接网络,(可能防火墙拦截,如果可以正常访问大漠插件网站，那就可以肯定是被防火墙拦截)
+-2 : 进程没有以管理员方式运行. (出现在win7 win8 vista 2008.建议关闭uac)
+0 : 失败 (未知错误)
+1 : 成功
+2 : 余额不足
+3 : 绑定了本机器，但是账户余额不足50元.
+4 : 注册码错误
+5 : 你的机器或者IP在黑名单列表中或者不在白名单列表中.
+6 : 非法使用插件.
+7 : 你的帐号因为非法使用被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+77： 机器码或者IP因为非法使用，而被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+     封禁是全局的，如果使用了别人的软件导致77，也一样会导致所有注册码均无法注册。解决办法是更换IP，更换MAC.
+-8 : 版本附加信息长度超过了20
+-9 : 版本附加信息里包含了非法字母.
+-10 : 非法的参数ip
+空 : 这是不可能返回空的，如果出现空，那肯定是当前使用的版本不对,老的插件里没这个函数导致返回为空.最好参考文档中的标准写法,判断插件版本号.
+示例:
+// 严重注意,这个例子的IP只是示例，实际并无效。真实IP要去VIP群里获取.
+dm_ret = dm.RegExNoMac("abcdefg","0001","123.45.4.6|78.79.26.3")
+if dm_ret <> 1 then
+    MessageBox "注册失败,只能使用免费功能"
+end if
+注: 简单游平台调用此函数，不会扣费.
+注册码在大漠插件后台可以查看.
+此函数每个进程调用一次即可，不需要每个DM对象都调用.
+必须保证此函数在创建完对象以后立即调用，尤其必须在绑定窗口之前调用，否则可能会出现异常.
+如果有多个进程操作同个窗口，必须保证每个进程要么都调用RegExNoMac,要么都不要调用RegExNoMac，以免出现异常.
+]]
+function DMCenter:RegExNoMac(reg_code,ver_info,ip)
+    return CPLUS.DmCenter.RegExNoMac(reg_code,ver_info,ip)
+end
+
+
+
+
+
+--[[
+调用此函数来注册，从而使用插件的高级功能.推荐使用此函数. 
+新手不建议使用! 此函数同Reg函数的不同在于,此函数用于注册的机器码是不带mac地址的.
+reg_code 字符串: 注册码. (从大漠插件后台获取)
+
+ver_info 字符串: 版本附加信息. 可以在后台详细信息查看. 可以任意填写. 可留空. 长度不能超过20. 并且只能包含数字和字母以及小数点. 这个版本信息不是插件版本.
+
+返回值:
+
+整形数:
+-1 : 无法连接网络,(可能防火墙拦截,如果可以正常访问大漠插件网站，那就可以肯定是被防火墙拦截)
+-2 : 进程没有以管理员方式运行. (出现在win7 win8 vista 2008.建议关闭uac)
+0 : 失败 (未知错误)
+1 : 成功
+2 : 余额不足
+3 : 绑定了本机器，但是账户余额不足50元.
+4 : 注册码错误
+5 : 你的机器或者IP在黑名单列表中或者不在白名单列表中.
+6 : 非法使用插件.
+7 : 你的帐号因为非法使用被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+77： 机器码或者IP因为非法使用，而被封禁. （如果是在虚拟机中使用插件，必须使用Reg或者RegEx，不能使用RegNoMac或者RegExNoMac,否则可能会造成封号，或者封禁机器）
+     封禁是全局的，如果使用了别人的软件导致77，也一样会导致所有注册码均无法注册。解决办法是更换IP，更换MAC.
+-8 : 版本附加信息长度超过了20
+-9 : 版本附加信息里包含了非法字母.
+空 : 这是不可能返回空的，如果出现空，那肯定是当前使用的版本不对,老的插件里没这个函数导致返回为空.最好参考文档中的标准写法,判断插件版本号.
+示例:
+dm_ret = dm.RegNoMac("abcdefg","")
+if dm_ret <> 1 then
+    MessageBox "注册失败,只能使用免费功能"
+end if
+注: 简单游平台调用此函数，不会扣费.
+注册码在大漠插件后台可以查看.
+此函数每个进程调用一次即可，不需要每个DM对象都调用.
+必须保证此函数在创建完对象以后立即调用，尤其必须在绑定窗口之前调用，否则可能会出现异常.
+如果有多个进程操作同个窗口，必须保证每个进程要么都调用RegNoMac,要么都不要调用RegNoMac，以免出现异常.
+]]
+function DMCenter:RegNoMac(reg_code,ver_info)
+    return CPLUS.DmCenter.RegNoMac(reg_code,ver_info)
+end
+
+
+
+--[[
+设定图色的获取方式，默认是显示器或者后台窗口(具体参考BindWindow)
+mode 字符串: 图色输入模式取值有以下几种
+1.     "screen" 这个是默认的模式，表示使用显示器或者后台窗口
+2.     "pic:file" 指定输入模式为指定的图片,如果使用了这个模式，则所有和图色相关的函数
+均视为对此图片进行处理，比如文字识别查找图片 颜色 等等一切图色函数.
+需要注意的是，设定以后，此图片就已经加入了缓冲，如果更改了源图片内容，那么需要
+释放此缓冲，重新设置.
+3.     "mem:addr,size" 指定输入模式为指定的图片,此图片在内存当中. addr为图像内存地址,size为图像内存大小.
+如果使用了这个模式，则所有和图色相关的函数,均视为对此图片进行处理.
+比如文字识别 查找图片 颜色 等等一切图色函数.
+返回值:
+整形数:
+0: 失败 1: 成功
+示例:
+// 设定为默认的模式
+dm_ret = dm.SetDisplayInput("screen")
+// 设定为图片模式 图片采用相对路径模式 相对于SetPath的路径
+dm_ret = dm.SetDisplayInput("pic:test.bmp")
+// 设为图片模式 图片采用绝对路径模式
+dm_ret = dm.SetDisplayInput("pic:d:\test\test.bmp")
+// 设为图片模式 但是每次设置前 先清除缓冲
+dm_ret = dm.FreePic("test.bmp")
+dm_ret = dm.SetDisplayInput("pic:test.bmp")
+// 设置为图片模式,图片从内存中获取
+dm_ret = dm.SetDisplayInput("mem:1230434,884")
+]]
+function DMCenter:SetDisplayInput(mode)
+    return CPLUS.DmCenter.SetDisplayInput(mode) == 1
+end
+
+
+
+
+
+--[[
+设置EnumWindow  EnumWindowByProcess  EnumWindowSuper FindWindow以及FindWindowEx的最长延时. 内部默认超时是10秒.
+delay 整形数: 单位毫秒
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SetEnumWindowDelay  300000
+注: 有些时候，窗口过多，并且窗口结构过于复杂，可能枚举的时间过长. 那么需要调用这个函数来延长时间。避免漏掉窗口.
+]]
+function DMCenter:SetEnumWindowDelay(delay)
+    return CPLUS.DmCenter.SetEnumWindowDelay(delay) == 1
+end
+
+
+
+
+
+--[[
+设置全局路径,设置了此路径后,所有接口调用中,相关的文件都相对于此路径. 比如图片,字库等.
+path 字符串: 路径,可以是相对路径,也可以是绝对路径
+
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 以下代码把全局路径设置到了c盘根目录
+dm_ret = dm.SetPath("c:\")
+// 如下是把全局路径设置到了相对于当前exe所在的路径
+dm.SetPath ".\MyData"
+// 以上，如果exe在c:\test\a.exe 那么，就相当于把路径设置到了c:\test\MyData
+]]
+function DMCenter:SetPath(path)
+    return CPLUS.DmCenter.SetPath(path) == 1
+end
+
+
+
+
+--[[
+设置是否弹出错误信息,默认是打开.
+show 整形数: 0表示不打开,1表示打开
+返回值:
+整形数:
+0 : 失败
+1 : 成功
+示例:
+dm_ret = dm.SetShowErrorMsg(0)
+]]
+function DMCenter:SetShowErrorMsg(show)
+    return CPLUS.DmCenter.SetShowErrorMsg(show) == 1
+end
+
+
+
+
+--[[
+设置是否对前台图色进行加速. (默认是关闭). (对于不绑定，或者绑定图色为normal生效)( 仅对WIN8以上系统有效)
+enable 整形数: 
+       0 : 关闭
+       1 : 打开
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SpeedNormalGraphic 1
+注: WIN8以上系统,由于AERO的开启,导致前台图色速度很慢,使用此接口可以显著提速.
+WIN7系统无法使用,只能通过关闭aero来对前台图色提速.
+每个进程,最多只能有一个对象开启此加速接口,如果要用开启别的对象的加速，那么要先关闭之前开启的.
+并且开启此接口后,仅能对主显示器的屏幕进行截图,分屏的显示器上的内容无法截图.
+另外需要注意,开启此接口后，仅对屏幕变化很频繁时有效，比如某窗口FPS很高时，越高效果越好. 如果开启此接口对静态屏幕进行图色，那效果还不如不开.
+]]
+function DMCenter:SpeedNormalGraphic(enable)
+    return CPLUS.DmCenter.SpeedNormalGraphic(enable) == 1
+end
+
+
+
+--[[
+返回当前插件版本号
+字符串:
+当前插件的版本描述字符串
+示例:
+// 返回版本号
+ver = dm.Ver()
+MessageBox ver
+]]
+function DMCenter:Ver()
+    return CPLUS.DmCenter.Ver()
+end
+
+
+
+
+---------------------------------后台设置---------------------------------------
+--[[
+绑定指定的窗口,并指定这个窗口的屏幕颜色获取方式,鼠标仿真模式,键盘仿真模式,以及模式设定,高级用户可以参考BindWindowEx更加灵活强大.
+hwnd 整形数: 指定的窗口句柄
+display 字符串: 屏幕颜色获取方式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台截屏模式
+"gdi" : gdi模式,用于窗口采用GDI方式刷新时. 此模式占用CPU较大. 参考SetAero  win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。
+"gdi2" : gdi2模式,此模式兼容性较强,但是速度比gdi模式要慢许多,如果gdi模式发现后台不刷新时,可以考虑用gdi2模式.
+"dx2" : dx2模式,用于窗口采用dx模式刷新,如果dx方式会出现窗口所在进程崩溃的状况,可以考虑采用这种.采用这种方式要保证窗口有一部分在屏幕外.win7 win8或者vista不需要移动也可后台.此模式占用CPU较大. 参考SetAero.   win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。
+"dx3" : dx3模式,同dx2模式,但是如果发现有些窗口后台不刷新时,可以考虑用dx3模式,此模式比dx2模式慢许多. 此模式占用CPU较大. 参考SetAero. win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。
+"dx" : dx模式,等同于BindWindowEx中，display设置的"dx.graphic.2d|dx.graphic.3d",具体参考BindWindowEx
+mouse 字符串: 鼠标仿真模式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台鼠标模式
+"windows": Windows模式,采取模拟windows消息方式 同按键自带后台插件.
+"windows2": Windows2 模式,采取模拟windows消息方式(锁定鼠标位置) 此模式等同于BindWindowEx中的mouse为以下组合
+"dx.mouse.position.lock.api|dx.mouse.position.lock.message|dx.mouse.state.message"
+"windows3": Windows3模式，采取模拟windows消息方式,可以支持有多个子窗口的窗口后台.
+"dx": dx模式,采用模拟dx后台鼠标模式,这种方式会锁定鼠标输入.有些窗口在此模式下绑定时，需要先激活窗口再绑定(或者绑定以后激活)，否则可能会出现绑定后鼠标无效的情况.此模式等同于BindWindowEx中的mouse为以下组合
+"dx.public.active.api|dx.public.active.message|dx.mouse.position.lock.api|dx.mouse.position.lock.message|dx.mouse.state.api|dx.mouse.state.message|dx.mouse.api|dx.mouse.focus.input.api|dx.mouse.focus.input.message|dx.mouse.clip.lock.api|dx.mouse.input.lock.api|dx.mouse.cursor"
+"dx2"：dx2模式,这种方式类似于dx模式,但是不会锁定外部鼠标输入.
+有些窗口在此模式下绑定时，需要先激活窗口再绑定(或者绑定以后手动激活)，否则可能会出现绑定后鼠标无效的情况. 此模式等同于BindWindowEx中的mouse为以下组合
+"dx.public.active.api|dx.public.active.message|dx.mouse.position.lock.api|dx.mouse.state.api|dx.mouse.api|dx.mouse.focus.input.api|dx.mouse.focus.input.message|dx.mouse.clip.lock.api|dx.mouse.input.lock.api| dx.mouse.cursor"
+keypad 字符串: 键盘仿真模式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台键盘模式
+"windows": Windows模式,采取模拟windows消息方式 同按键的后台插件.
+"dx": dx模式,采用模拟dx后台键盘模式。有些窗口在此模式下绑定时，需要先激活窗口再绑定(或者绑定以后激活)，否则可能会出现绑定后键盘无效的情况. 此模式等同于BindWindowEx中的keypad为以下组合
+"dx.public.active.api|dx.public.active.message| dx.keypad.state.api|dx.keypad.api|dx.keypad.input.lock.api"
+mode 整形数: 模式。 取值有以下几种
+     0 : 推荐模式此模式比较通用，而且后台效果是最好的.
+     2 : 同模式0,如果模式0有崩溃问题，可以尝试此模式. 注意0和2模式，当主绑定(第一个绑定同个窗口的对象)绑定成功后，那么调用主绑定的线程必须一致维持,否则线程一旦推出,对应的绑定也会消失.
+     101 : 超级绑定模式. 可隐藏目标进程中的dm.dll.避免被恶意检测.效果要比dx.public.hide.dll好. 推荐使用.
+     103 : 同模式101，如果模式101有崩溃问题，可以尝试此模式. 
+     11 : 需要加载驱动,适合一些特殊的窗口,如果前面的无法绑定，可以尝试此模式. 此模式不支持32位系统
+     13 : 需要加载驱动,适合一些特殊的窗口,如果前面的无法绑定，可以尝试此模式. 此模式不支持32位系统
+需要注意的是: 模式101 103在大部分窗口下绑定都没问题。但也有少数特殊的窗口，比如有很多子窗口的窗口，对于这种窗口，在绑定时，一定要把
+鼠标指向一个可以输入文字的窗口，比如一个文本框，最好能激活这个文本框，这样可以保证绑定的成功.
+返回值:
+整形数:
+0: 失败
+1: 成功
+如果返回0，可以调用GetLastError来查看具体失败错误码,帮助分析问题.
+示例:
+// display: 前台 鼠标:前台键盘:前台 模式0
+dm_ret = dm.BindWindow(hwnd,"normal","normal","normal",0)
+// display: dx 鼠标:前台 键盘:前台模式0
+dm_ret = dm.BindWindow(hwnd,"dx","normal","normal",0)
+// display: dx 鼠标:dx 后台 键盘: dx后台 模式1
+dm_ret = dm.BindWindow(hwnd,"dx","dx","dx",1) 
+// display: dx 鼠标:windows3后台 键盘:windows后台 模式101
+dm_ret = dm.BindWindow(hwnd,"dx","windows3","windows",101)
+注意:
+绑定之后,所有的坐标都相对于窗口的客户区坐标(不包含窗口边框)
+另外,绑定窗口后,必须加以下代码,以保证所有资源正常释放
+这个函数的意思是在脚本结束时,会调用这个函数。需要注意的是，目前的按键版本对于这个函数的执行不是线程级别的，也就是说，这个函数只会在主线程执行，子线程绑定的大漠对象，不保证完全释放。 
+Sub OnScriptExit()
+    dm_ret = dm.UnBindWindow() 
+End Sub
+另外 绑定dx会比较耗时间,请不要频繁调用此函数.
+还有一点特别要注意的是,有些窗口绑定之后必须加一定的延时,否则后台也无效.一般1秒到2秒的延时就足够.
+发现绑定失败的几种可能(一般是需要管理员权限的模式才有可能会失败)
+1.     系统登录的帐号必须有Administrators权限
+2.     一些防火墙会防止插件注入窗口所在进程，比如360防火墙等，必须把dm.dll设置为信任.
+3.     还有一个比较弱智的可能性，那就是插件没有注册到系统中，这时CreateObject压根就是失败的. 检测对象是否创建成功很简单，如下代码
+set dm = createobject("dm.dmsoft")
+ver = dm.Ver()
+If len(ver) = 0 Then
+    MessageBox "创建对象失败,检查系统是否禁用了vbs脚本权限"
+    EndScript
+End If
+4.     在沙盘中开的窗口进程，绑定一些需要管理员权限的模式，会失败。
+解决方法是要配置沙盘参数，具体如何配置参考沙盘绑定方法.
+5.     窗口所在进程有保护，这个我也无能为力.
+]]
+function DMCenter:BindWindow(hwnd,display,mouse,keypad,mode)
+    return CPLUS.DmCenter.BindWindow(hwnd,display,mouse,keypad,mode) == 1
+end
+
+
+--[[
+绑定指定的窗口,并指定这个窗口的屏幕颜色获取方式,鼠标仿真模式,键盘仿真模式 高级用户使用.
+hwnd 整形数: 指定的窗口句柄
+display 字符串: 屏幕颜色获取方式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台截屏模式
+"gdi" : gdi模式,用于窗口采用GDI方式刷新时. 此模式占用CPU较大. 参考SetAero. win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。  
+"gdi2" : gdi2模式,此模式兼容性较强,但是速度比gdi模式要慢许多,如果gdi模式发现后台不刷新时,可以考虑用gdi2模式.
+"dx2" : dx2模式,用于窗口采用dx模式刷新,如果dx方式会出现窗口进程崩溃的状况,可以考虑采用这种.采用这种方式要保证窗口有一部分在屏幕外.win7 win8或者vista不需要移动也可后台. 此模式占用CPU较大. 参考SetAero. win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。 
+"dx3" : dx3模式,同dx2模式,但是如果发现有些窗口后台不刷新时,可以考虑用dx3模式,此模式比dx2模式慢许多. 此模式占用CPU较大. 参考SetAero. win10以上系统使用此模式，如果截图失败，尝试把目标程序重新开启再试试。
+
+dx模式,用于窗口采用dx模式刷新,取值可以是以下任意组合，组合采用"|"符号进行连接. 支持BindWindow中的缩写模式. 比如dx代表" dx.graphic.2d| dx.graphic.3d"
+1. "dx.graphic.2d"  2d窗口的dx图色模式  
+2. "dx.graphic.2d.2"  2d窗口的dx图色模式  是dx.graphic.2d的增强模式.兼容性更好.
+3. "dx.graphic.3d"  3d窗口的dx图色模式, 
+4. "dx.graphic.3d.8"  3d窗口的dx8图色模式,  此模式对64位进程无效.
+5. "dx.graphic.opengl"  3d窗口的opengl图色模式,极少数窗口采用opengl引擎刷新. 此图色模式速度可能较慢. 
+6. "dx.graphic.opengl.esv2"  3d窗口的opengl_esv2图色模式,极少数窗口采用opengl引擎刷新. 此图色模式速度可能较慢.
+7. "dx.graphic.3d.10plus"  3d窗口的dx10 dx11图色模式
+
+mouse 字符串: 鼠标仿真模式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台鼠标模式
+"windows": Windows模式,采取模拟windows消息方式 同按键的后台插件.
+"windows3": Windows3模式，采取模拟windows消息方式,可以支持有多个子窗口的窗口后台
+
+dx模式,取值可以是以下任意组合. 组合采用"|"符号进行连接. 支持BindWindow中的缩写模式,比如windows2代表"dx.mouse.position.lock.api|dx.mouse.position.lock.message|dx.mouse.state.message"
+1. "dx.mouse.position.lock.api"  此模式表示通过封锁系统API，来锁定鼠标位置.
+2. "dx.mouse.position.lock.message" 此模式表示通过封锁系统消息，来锁定鼠标位置.
+3. "dx.mouse.focus.input.api" 此模式表示通过封锁系统API来锁定鼠标输入焦点.
+4. "dx.mouse.focus.input.message"此模式表示通过封锁系统消息来锁定鼠标输入焦点.
+5. "dx.mouse.clip.lock.api" 此模式表示通过封锁系统API来锁定刷新区域。注意，使用这个模式，在绑定前，必须要让窗口完全显示出来.
+6. "dx.mouse.input.lock.api" 此模式表示通过封锁系统API来锁定鼠标输入接口.
+7. "dx.mouse.state.api" 此模式表示通过封锁系统API来锁定鼠标输入状态.
+8. "dx.mouse.state.message" 此模式表示通过封锁系统消息来锁定鼠标输入状态.
+9. "dx.mouse.api"  此模式表示通过封锁系统API来模拟dx鼠标输入.
+10. "dx.mouse.cursor"  开启此模式，可以后台获取鼠标特征码. 
+11. "dx.mouse.raw.input"  有些窗口需要这个才可以正常操作鼠标. 
+12. "dx.mouse.input.lock.api2"  部分窗口在后台操作时，前台鼠标会移动,需要这个属性.
+13. "dx.mouse.input.lock.api3"  部分窗口在后台操作时，前台鼠标会移动,需要这个属性. 
+
+keypad 字符串: 键盘仿真模式 取值有以下几种
+"normal" : 正常模式,平常我们用的前台键盘模式
+"windows": Windows模式,采取模拟windows消息方式 同按键的后台插件.
+dx模式,取值可以是以下任意组合. 组合采用"|"符号进行连接. 支持BindWindow中的缩写模式.比如dx代表" dx.public.active.api|dx.public.active.message| dx.keypad.state.api|dx.keypad.api|dx.keypad.input.lock.api"
+1. "dx.keypad.input.lock.api" 此模式表示通过封锁系统API来锁定键盘输入接口.
+2. "dx.keypad.state.api" 此模式表示通过封锁系统API来锁定键盘输入状态.
+3. "dx.keypad.api" 此模式表示通过封锁系统API来模拟dx键盘输入. 
+4. "dx.keypad.raw.input"  有些窗口需要这个才可以正常操作键盘.
+
+public 字符串: 公共属性 dx模式共有 
+取值可以是以下任意组合. 组合采用"|"符号进行连接 这个值可以为空
+1. "dx.public.active.api" 此模式表示通过封锁系统API来锁定窗口激活状态.  注意，部分窗口在此模式下会耗费大量资源慎用. 
+2. "dx.public.active.message" 此模式表示通过封锁系统消息来锁定窗口激活状态.  注意，部分窗口在此模式下会耗费大量资源慎用. 另外如果要让此模式生效，必须在绑定前，让绑定窗口处于激活状态,否则此模式将失效. 比如dm.SetWindowState hwnd,1 然后再绑定.
+3.  "dx.public.disable.window.position" 此模式将锁定绑定窗口位置.不可与"dx.public.fake.window.min"共用.
+4.  "dx.public.disable.window.size" 此模式将锁定绑定窗口,禁止改变大小. 不可与"dx.public.fake.window.min"共用.
+5.  "dx.public.disable.window.minmax" 此模式将禁止窗口最大化和最小化,但是付出的代价是窗口同时也会被置顶. 不可与"dx.public.fake.window.min"共用.
+6.  "dx.public.fake.window.min" 此模式将允许目标窗口在最小化状态时，仍然能够像非最小化一样操作.. 另注意，此模式会导致任务栏顺序重排，所以如果是多开模式下，会看起来比较混乱，建议单开使用，多开不建议使用. 同时此模式不是万能的,有些情况下最小化以后图色会不刷新或者黑屏.
+7.  "dx.public.hide.dll" 此模式将会隐藏目标进程的大漠插件，避免被检测..另外使用此模式前，请仔细做过测试，此模式可能会造成目标进程不稳定，出现崩溃。
+8.  "dx.public.active.api2" 此模式表示通过封锁系统API来锁定窗口激活状态. 部分窗口遮挡无法后台,需要这个属性. 
+9.  "dx.public.input.ime" 此模式是配合SendStringIme使用. 具体可以查看SendStringIme接口.
+10  "dx.public.graphic.protect" 此模式可以保护dx图色不被恶意检测.同时对dx.keypad.api和dx.mouse.api也有保护效果.
+11  "dx.public.disable.window.show" 禁止目标窗口显示,这个一般用来配合dx.public.fake.window.min来使用. 
+12  "dx.public.anti.api" 此模式可以突破部分窗口对后台的保护.
+13  "dx.public.km.protect" 此模式可以保护dx键鼠不被恶意检测.最好配合dx.public.anti.api一起使用. 此属性可能会导致部分后台功能失效.
+14   "dx.public.prevent.block"  绑定模式1 3 5 7 101 103下，可能会导致部分窗口卡死. 这个属性可以避免卡死.
+15   "dx.public.ori.proc"  此属性只能用在模式0 1 2 3和101下. 有些窗口在不同的界面下(比如登录界面和登录进以后的界面)，键鼠的控制效果不相同. 那可以用这个属性来尝试让保持一致. 注意的是，这个属性不可以滥用，确保测试无问题才可以使用. 否则可能会导致后台失效.
+16  "dx.public.down.cpu" 此模式可以配合DownCpu来降低目标进程CPU占用.  当图色方式降低CPU无效时，可以尝试此种方式.
+17  "dx.public.focus.message" 当后台绑定后,后台无法正常在焦点窗口输入文字时,可以尝试加入此属性. 此属性会强制键盘消息发送到焦点窗口. 慎用此模式,此模式有可能会导致后台键盘在某些情况下失灵.
+18  "dx.public.graphic.speed" 只针对图色中的dx模式有效.此模式会牺牲目标窗口的性能，来提高DX图色速度，尤其是目标窗口刷新很慢时，这个参数就很有用了.
+19  "dx.public.memory" 让本对象突破目标进程防护,可以正常使用内存接口. 当用此方式使用内存接口时，内存接口的速度会取决于目标窗口的刷新率.
+20  "dx.public.inject.super" 突破某些难以绑定的窗口. 此属性仅对除了模式0和2的其他模式有效.
+21  "dx.public.hack.speed" 类似变速齿轮，配合接口HackSpeed使用
+
+mode 整形数: 模式。取值有以下几种
+     0 : 推荐模式此模式比较通用，而且后台效果是最好的.
+     2 : 同模式0,如果模式0有崩溃问题，可以尝试此模式.  注意0和2模式，当主绑定(第一个绑定同个窗口的对象)绑定成功后，那么调用主绑定的线程必须一致维持,否则线程一旦推出,对应的绑定也会消失.
+     101 : 超级绑定模式. 可隐藏目标进程中的dm.dll.避免被恶意检测.效果要比dx.public.hide.dll好. 推荐使用.
+     103 : 同模式101，如果模式101有崩溃问题，可以尝试此模式. 
+     11 : 需要加载驱动,适合一些特殊的窗口,如果前面的无法绑定，可以尝试此模式. 此模式不支持32位系统
+     13 : 需要加载驱动,适合一些特殊的窗口,如果前面的无法绑定，可以尝试此模式. 此模式不支持32位系统
+需要注意的是: 模式101 103在大部分窗口下绑定都没问题。但也有少数特殊的窗口，比如有很多子窗口的窗口，对于这种窗口，在绑定时，一定要把鼠标指向一个可以输入文字的窗口，比如一个文本框，最好能激活这个文本框，这样可以保证绑定的成功.
+返回值:
+整形数:
+0: 失败
+1: 成功
+如果返回0，可以调用GetLastError来查看具体失败错误码,帮助分析问题.
+示例:
+比如
+dm_ret = dm.BindWindowEx(hwnd,"normal","dx.mouse.position.lock.api|dx.mouse.position.lock.message","windows","dx.public.active.api",0)
+dm_ret = dm.BindWindowEx(hwnd,"dx2","windows","normal","dx.public.active.api",0)
+dm_ret = dm.BindWindowEx(hwnd,"dx.graphic.2d","dx.mouse.position.lock.api|dx.mouse.position.lock.message","dx.keypad.state.api|dx.keypad.api","",0)
+dm_ret = dm.BindWindowEx(hwnd,"dx2","windows","windows","",0)
+dm_ret = dm.BindWindowEx(hwnd,"dx2","windows","windows","dx.public.disable.window.size|dx.public.disable.window.minmax",0)
+dm_ret = dm.BindWindowEx(hwnd,"dx2","windows3","windows","dx.mouse.position.lock.api",0)
+等等.
+注意:
+绑定之后,所有的坐标都相对于窗口的客户区坐标(不包含窗口边框)
+另外,绑定窗口后,必须加以下代码,以保证所有资源正常释放
+这个函数的意思是在脚本结束时,会调用这个函数。需要注意的是，目前的按键版本对于这个函数的执行不是线程级别的，也就是说，这个函数只会在主线程执行，子线程绑定的大漠对象，不保证完全释放。高级语言中则需要自己控制在适当的时候解除绑定.
+Sub OnScriptExit()
+    dm_ret = dm.UnBindWindow() 
+End Sub
+另外 绑定dx会比较耗时间,请不要频繁调用此函数.
+还有一点特别要注意的是,有些窗口绑定之后必须加一定的延时,否则后台也无效.一般1秒到2秒的延时就足够.
+发现绑定失败的几种可能(一般是需要管理员权限的模式才有可能会失败)
+1.     系统登录的帐号必须有Administrators权限
+2.     一些防火墙会防止插件注入窗口所在进程，比如360防火墙等，必须把dm.dll设置为信任.
+3.     还有一个比较弱智的可能性，那就是插件没有注册到系统中，这时CreateObject压根就是失败的. 检测对象是否创建成功很简单，如下代码
+set dm = createobject("dm.dmsoft")
+ver = dm.Ver()
+If len(ver) = 0 Then
+    MessageBox "创建对象失败,检查系统是否禁用了vbs脚本权限"
+    EndScript
+End If
+4.     在沙盘中开的窗口，绑定一些需要管理员权限的模式，会失败。
+解决方法是要配置沙盘参数，参考如何配置沙盘参数.
+5.     窗口所在进程有保护，这个我也无能为力.
+]]
+function DMCenter:BindWindowEx(hwnd,display,mouse,keypad,public,mode)
+    return CPLUS.DmCenter.BindWindowEx(hwnd,display,mouse,keypad,public,mode) == 1
+end
+
+
+
+--[[
+降低目标窗口所在进程的CPU占用
+rate 整形数: 取值范围大于等于0  取值为0 表示关闭CPU优化. 这个值越大表示降低CPU效果越好.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindowEx(hwnd,"dx.graphic.3d","normal","normal","",0)
+dm.DownCpu 50
+dm_ret = dm.BindWindowEx(hwnd,"normal","normal","normal","dx.public.down.cpu",101)
+dm.DownCpu 50
+注意: 此接口必须在绑定窗口成功以后调用，而且必须保证目标窗口可以支持dx.graphic.3d或者dx.graphic.3d.8或者dx.graphic.2d或者dx.graphic.2d.2或者dx.graphic.opengl或者dx.graphic.opengl.esv2方式截图，或者使用dx.public.down.cpu.否则降低CPU无效.
+因为降低CPU是通过降低窗口刷新速度或者在系统消息循环增加延时来实现，所以注意，开启此功能以后会导致窗口刷新速度变慢.
+]]
+function DMCenter:DownCpu(rate)
+    return CPLUS.DmCenter.DownCpu(rate) == 1
+end
+
+
+
+
+--[[
+设置是否暂时关闭或者开启后台功能. 默认是开启.  一般用在前台切换，或者脚本暂停和恢复时，可以让用户操作窗口
+enable 整形数: 0 全部关闭(图色键鼠都关闭,也就是说图色,键鼠都是前台,但是如果有指定dx.public.active.message时，在窗口前后台切换时，这个属性会失效.)
+-1 只关闭图色.(也就是说图色是normal前台. 键鼠不变)
+1 开启(恢复原始状态)
+5 同0，也是全部关闭，但是这个模式下，就算窗口在前后台切换时，属性dx.public.active.message的效果也一样不会失效.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 绑定为后台
+dm_ret = dm.BindWindow(hwnd,"dx","dx","dx",101)
+// 后台操作
+…
+// 切换到前台
+dm.EnableBind 0
+// 前台操作
+…
+// 再切换回后台
+dm.EnableBind 1
+注: 注意切换到前台以后,相当于dm_ret = dm.BindWindow(hwnd,"normal","normal","normal",0),图色键鼠全部是前台.
+如果你经常有频繁切换后台和前台的操作，推荐使用这个函数.
+同时要注意,如果有多个对象绑定了同个窗口，其中任何一个对象禁止了后台,那么其他对象后台也同样失效.
+]]
+function DMCenter:EnableBind(enable)
+    return CPLUS.DmCenter.EnableBind(enable) == 1
+end
+
+
+
+
+
+--[[
+设置是否开启后台假激活功能. 默认是关闭. 一般用不到. 除非有人有特殊需求. 注意看注释. 
+enable 整形数: 0 关闭
+               1 开启
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 绑定以后再调用此函数
+dm.EnableFakeActive 1
+// 这里做需要在窗口非激活状态下,可以操作的接口或者第三方函数
+…
+// 恢复
+dm.EnableFakeActive 0
+注: 此接口的含义并不是关闭或者开启窗口假激活功能(dx.public.active.api或者dx.public.active.message). 而是说有些时候，本来窗口没有激活并且在没有绑定的状态下，可以正常使用的功能，而在窗口绑定以后,并且窗口在非激活状态下,此时由于绑定的锁定导致无法使用. 那么，你就需要把你的部分代码用EnableFakeActive来保护起来。这样就让插件认为你的这段代码是在窗口激活状态下执行.
+另外，此函数开启以后，有可能会让前台影响到后台. 所以如果不是特殊情况，最好是关闭. 
+有些时候，有人会故意利用这个前台影响后台的作用，做类似同步器的软件，那这个函数就很有作用了.
+]]
+function DMCenter:EnableFakeActive(enable)
+    return CPLUS.DmCenter.EnableFakeActive(enable) == 1
+end
+
+
+
+
+--[[
+设置是否关闭绑定窗口所在进程的输入法.
+enable 整形数: 1 开启
+0 关闭
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 绑定为后台
+dm_ret = dm.BindWindow(hwnd,"dx","dx","dx",101)
+…
+// 关闭输入法
+dm.EnableIme 0 
+…
+// 再开启输入法
+dm.EnableIme 1
+注: 此函数必须在绑定后调用才有效果.
+]]
+function DMCenter:EnableIme(enable)
+    return CPLUS.DmCenter.EnableIme(enable) == 1
+end
+
+
+
+
+--[[
+是否在使用dx键盘时开启windows消息.默认开启. 
+enable 整形数: 0 禁止
+               1开启
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.EnableKeypadMsg 0
+注: 此接口必须在绑定之后才能调用。特殊时候使用.
+]]
+function DMCenter:EnableKeypadMsg(enable)
+    return CPLUS.DmCenter.EnableKeypadMsg(enable) == 1
+end
+
+
+
+
+--[[
+键盘消息发送补丁. 默认是关闭.
+enable 整形数: 0 禁止
+               1开启  
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.EnableKeypadPatch 1
+注: 此接口必须在绑定之后才能调用。
+]]
+function DMCenter:EnableKeypadPatch(enable)
+    return CPLUS.DmCenter.EnableKeypadPatch(enable) == 1
+end
+
+
+
+
+
+--[[
+键盘消息采用同步发送模式.默认异步.
+enable 整形数: 0 禁止同步
+               1开启同步
+time_out 整形数: 单位是毫秒,表示同步等待的最大时间.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.EnableKeypadSync 1,200
+
+注: 此接口必须在绑定之后才能调用。
+有些时候，如果是异步发送，如果发送动作太快,中间没有延时,有可能下个动作会影响前面的.
+而用同步就没有这个担心.
+]]
+function DMCenter:EnableKeypadSync(enable,time_out)
+    return CPLUS.DmCenter.EnableKeypadSync(enable,time_out) == 1
+end
+
+
+
+
+--[[
+是否在使用dx鼠标时开启windows消息.默认开启. 
+enable 整形数: 0 禁止
+               1开启
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.EnableMouseMsg 0
+注: 此接口必须在绑定之后才能调用。特殊时候使用.
+]]
+function DMCenter:EnableMouseMsg(enable)
+    return CPLUS.DmCenter.EnableMouseMsg(enable) == 1
+end
+
+
+
+
+--[[
+鼠标消息采用同步发送模式.默认异步. 
+enable 整形数: 0 禁止同步
+               1开启同步
+time_out 整形数: 单位是毫秒,表示同步等待的最大时间.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.EnableMouseSync 1,200
+注: 此接口必须在绑定之后才能调用。
+有些时候，如果是异步发送，如果发送动作太快,中间没有延时,有可能下个动作会影响前面的.
+而用同步就没有这个担心.
+]]
+function DMCenter:EnableMouseSync(enable,time_out)
+    return CPLUS.DmCenter.EnableMouseSync(enable,time_out) == 1
+end
+
+
+
+
+--[[
+键盘动作模拟真实操作,点击延时随机.
+enable 整形数: 0 关闭模拟
+               1 开启模拟
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.EnableRealKeypad 1
+dm.KeyPressChar "E"
+注: 此接口对KeyPress KeyPressChar KeyPressStr起作用。具体表现是键盘按下和弹起的间隔会在
+当前设定延时的基础上,上下随机浮动50%. 假如设定的键盘延时是100,那么这个延时可能就是50-150之间的一个值.
+设定延时的函数是 SetKeypadDelay
+]]
+function DMCenter:EnableRealKeypad(enable)
+    return CPLUS.DmCenter.EnableRealKeypad(enable) == 1
+end
+
+
+
+
+
+--[[
+鼠标动作模拟真实操作,带移动轨迹,以及点击延时随机.
+enable 整形数: 0 关闭模拟
+               1 开启模拟(直线模拟)
+               2 开启模式(随机曲线,更接近真实)
+mousedelay 整形数: 单位是毫秒. 表示在模拟鼠标移动轨迹时,每移动一次的时间间隔.这个值越大,鼠标移动越慢.
+Mousestep 整形数: 表示在模拟鼠标移动轨迹时,每移动一次的距离. 这个值越大，鼠标移动越快速.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.EnableRealMouse 1,20,30
+dm.MoveTo 100,100
+dm.MoveTo 500,500
+注: 此接口同样对LeftClick RightClick MiddleClick LeftDoubleClick起作用。具体表现是鼠标按下和弹起的间隔会在
+当前设定延时的基础上,上下随机浮动50%. 假如设定的鼠标延时是100,那么这个延时可能就是50-150之间的一个值.
+设定延时的函数是 SetMouseDelay
+]]
+function DMCenter:EnableRealMouse(enable,mousedelay,mousestep)
+    return CPLUS.DmCenter.EnableRealMouse(enable,mousedelay,mousestep) == 1
+end
+
+
+
+--[[
+设置是否开启高速dx键鼠模式。 默认是关闭.
+enable 整形数: 0 关闭
+1 开启
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.EnableSpeedDx 1
+注: 此函数开启的后果就是，所有dx键鼠操作将不会等待，适用于某些特殊的场合(比如避免窗口无响应导致宿主进程也卡死的问题).
+EnableMouseSync和EnableKeyboardSync开启以后，此函数就无效了.
+此函数可能在部分窗口下会有副作用，谨慎使用!!
+]]
+function DMCenter:EnableSpeedDx(enable)
+    return CPLUS.DmCenter.EnableSpeedDx(enable) == 1
+end
+
+
+
+
+
+
+
+--[[
+强制解除绑定窗口,并释放系统资源.
+hwnd 整形数: 需要强制解除绑定的窗口句柄.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.ForceUnBindWindow(hwnd)
+注: 此接口一般用在BindWindow和BindWindowEx中，使用了模式1 3 5 7或者属性dx.public.hide.dll后，在线程或者进程结束后，没有正确调用UnBindWindow而导致下次绑定无法成功时，可以先调用这个函数强制解除绑定，并释放资源，再进行绑定.
+此接口不可替代UnBindWindow. 只是用在非常时刻. 切记.
+一般情况下可以无条件的在BindWindow或者BindWindowEx之前调用一次此函数。保证此刻窗口处于非绑定状态.
+另外，需要注意的是,此函数只可以强制解绑在同进程绑定的窗口.  不可在不同的进程解绑别的进程绑定的窗口.(会产生异常)
+]]
+function DMCenter:ForceUnBindWindow(hwnd)
+    return CPLUS.DmCenter.ForceUnBindWindow(hwnd) == 1
+end
+
+
+
+--[[
+获取当前对象已经绑定的窗口句柄. 无绑定返回0
+整形数: 窗口句柄 
+]]
+function DMCenter:GetBindWindow()
+    return CPLUS.DmCenter.GetBindWindow()
+end
+
+
+
+--[[
+获取绑定窗口的fps. (即时fps,不是平均fps). 
+要想获取fps,那么图色模式必须是dx模式的其中一种.  
+比如dx.graphic.3d  dx.graphic.opengl等.
+返回值:
+整形数: fps
+示例:
+fps = dm.GetFps()
+]]
+function DMCenter:GetFps()
+    return CPLUS.DmCenter.GetFps()
+end
+
+
+--[[
+对目标窗口设置加速功能(类似变速齿轮),必须在绑定参数中有dx.public.hack.speed时才会生效.
+rate 双精度浮点数: 取值范围大于0. 默认是1.0 表示不加速，也不减速. 小于1.0表示减速,大于1.0表示加速. 精度为小数点后1位. 也就是说1.5 和 1.56其实是一样的.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindowEx(hwnd,"normal","normal","normal","dx.public.hack.speed",0)
+// 2倍加速
+dm.HackSpeed 2.0
+// 2.5倍
+dm.HackSpeed 2.5
+// 10.1倍
+dm.HackSpeed 10.1
+// 速度降低为原来的一半
+dm.HackSpeed 0.5
+// 速度降低为原来的十分之一
+dm.HackSpeed 0.1
+注意: 此接口必须在绑定窗口成功以后调用，而且必须有参数dx.public.hack.speed. 不一定对所有窗口有效,具体自己测试.
+]]
+function DMCenter:HackSpeed(rate)
+    return CPLUS.DmCenter.HackSpeed(rate) == 1
+end
+
+
+
+
+
+--[[
+判定指定窗口是否已经被后台绑定. (前台无法判定) 
+hwnd 整形数: 窗口句柄 
+返回值:
+整形数:
+0: 没绑定,或者窗口不存在.
+1: 已经绑定.
+示例:
+dm_ret = dm.IsBind(hwnd)
+]]
+function DMCenter:IsBind(hwnd)
+    return CPLUS.DmCenter.IsBind(hwnd) == 1
+end
+
+
+--[[
+锁定指定窗口的图色数据(不刷新). 
+lock 整形数: 0关闭锁定
+             1 开启锁定
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.LockDisplay 1
+// 这里做需要锁定做的事情
+dm.LockDisplay 0
+
+注意: 此接口只对图色为dx.graphic.3d  dx.graphic.3d.8 dx.graphic.2d  dx.graphic.2d.2有效.
+]]
+function DMCenter:LockDisplay(lock)
+    return CPLUS.DmCenter.LockDisplay(lock) == 1
+end
+
+
+
+
+--[[
+禁止外部输入到指定窗口
+lock 整形数: 0关闭锁定
+       1 开启锁定(键盘鼠标都锁定)
+       2 只锁定鼠标
+       3 只锁定键盘
+       4 同1,但当您发现某些特殊按键无法锁定时,比如(回车，ESC等)，那就用这个模式吧. 但此模式会让SendString函数后台失效，或者采用和SendString类似原理发送字符串的其他3方函数失效.
+       5同3,但当您发现某些特殊按键无法锁定时,比如(回车，ESC等)，那就用这个模式吧. 但此模式会让SendString函数后台失效，或者采用和SendString类似原理发送字符串的其他3方函数失效.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindow(hwnd,"dx","dx2","dx",0)
+dm.LockInput 1
+// 这里做需要锁定输入做的事情
+dm.LockInput 0
+注意:此接口只针对dx键鼠. 普通键鼠无效. 
+有时候，绑定为dx2 鼠标模式时(或者没有锁定鼠标位置或状态时)，在脚本处理过程中，在某个时候需要临时锁定外部输入，以免外部干扰，那么这个函数就非常有用.
+比如某个信息，需要鼠标移动到某个位置才可以获取，但这时，如果外部干扰，那么很可能就会获取失败，所以，这时候就很有必要锁定外部输入. 
+当然，锁定完以后，记得要解除锁定，否则外部永远都无法输入了，除非解除了窗口绑定.
+]]
+function DMCenter:LockInput(lock)
+    return CPLUS.DmCenter.LockInput(lock) == 1
+end
+
+
+
+
+
+--[[
+设置前台鼠标在屏幕上的活动范围.
+x1 整形数:区域的左上X坐标. 屏幕坐标.
+y1 整形数:区域的左上Y坐标. 屏幕坐标.
+x2 整形数:区域的右下X坐标. 屏幕坐标.
+y2 整形数:区域的右下Y坐标. 屏幕坐标.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 限制鼠标只能在10,10,800,600区域内活动.
+dm.LockMouseRect 10,10,800,600
+…
+Sub OnScriptExit()
+    // 恢复,4个参数都是0,表示恢复鼠标活动范围为整个屏幕区域.
+    dm.LockMouseRect 0,0,0,0
+End Sub
+注: 调用此函数后，一旦有窗口切换或者窗口移动的动作，那么限制立刻失效.
+如果想一直限制鼠标范围在指定的窗口客户区域，那么你需要启动一个线程，并且时刻监视当前活动窗口，然后根据情况调用此函数限制鼠标范围.
+]]
+function DMCenter:LockMouseRect(x1,y1,x2,y2)
+    return CPLUS.DmCenter.LockMouseRect(x1,y1,x2,y2) == 1
+end
+
+
+
+--[[
+设置开启或者关闭系统的Aero效果. (仅对WIN7及以上系统有效) 
+enable 整形数: 0 关闭
+1 开启
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SetAero 0
+注: 如果您发现当图色后台为dx2 gdi dx3时，如果有发现目标窗口刷新速度过慢,那可以考虑关闭系统Aero. (当然这仅仅是可能的原因)
+]]
+function DMCenter:SetAero(enable)
+    return CPLUS.DmCenter.SetAero(enable)== 1
+end
+
+
+
+
+--[[
+设置dx截图最长等待时间。内部默认是3000毫秒. 一般用不到调整这个.
+time  整形数: 等待时间，单位是毫秒。 注意这里不能设置的过小，否则可能会导致截图失败,从而导致图色函数和文字识别失败.
+
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SetDisplayDelay 500
+注: 此接口仅对图色为dx.graphic.3d   dx.graphic.3d.8  dx.graphic.2d   dx.graphic.2d.2有效. 其他图色模式无效.
+默认情况下，截图需要等待一个延时，超时就认为截图失败. 这个接口可以调整这个延时. 某些时候或许有用.比如当窗口图色卡死(这时获取图色一定都是超时)，并且要判断窗口卡死，那么这个设置就很有用了。
+]]
+function DMCenter:SetDisplayDelay(time)
+    return CPLUS.DmCenter.SetDisplayDelay(time) == 1
+end
+
+
+
+
+--[[
+设置opengl图色模式的强制刷新窗口等待时间. 内置为400毫秒.
+time  整形数: 等待时间，单位是毫秒。 这个值越小,强制刷新的越频繁，相应的窗口可能会导致闪烁.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SetDisplayRefreshDelay 800
+注: 此接口仅对图色为dx.graphic.opengl有效. 其他图色模式无效.
+默认情况下，openg截图时，如果对应的窗口处于不刷新的状态,那么我们的所有图色接口都会无法截图,从而超时导致失效。
+所以特意设置这个接口，如果截图的时间超过此接口设置的时间,那么插件会对绑定的窗口强制刷新,从而让截图成功.
+但是强制刷新窗口是有代价的，会造成窗口闪烁。 
+如果您需要截图的窗口，刷新非常频繁，那么一般用不到强制刷新，所以可以用这个接口把等待时间设置大一些，从而避免窗口闪烁.
+反之,如果您需要截图的窗口偶尔才刷新一次(比如按某个按钮，才刷新一次),那么您就需要用这个接口把等待时间设置小一些，从而提高图色函数的效率，但代价就是窗口可能会闪烁.
+当这个接口设置的值超过SetDisplayDelay设置的值(默认是3000毫秒)时,那么opengl截图的方式就退化到老版本(大概是6.1540版本)的模式.(也就是不会强制刷新的版本). 
+如果您发现你的程序截图会截取到以前的图片,那么建议把此值加大(建议值2000). 
+如果您发现你的程序偶尔会闪烁,导致窗口出现白色区域,那么可以尝试把此值设置为大于SetDisplayDelay的值(默认是3000毫秒),这样可以彻底杜绝刷新.
+]]
+function DMCenter:SetDisplayRefreshDelay(time)
+    return CPLUS.DmCenter.SetDisplayRefreshDelay(time) == 1
+end
+
+
+
+--[[
+在不解绑的情况下,切换绑定窗口.(必须是同进程窗口) 
+hwnd 整形数: 需要切换过去的窗口句柄
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+// 绑定为后台
+dm_ret = dm.BindWindow(hwnd,"dx","dx","dx",101)
+// 切换
+hwnd1 = 111
+dm.SwitchBindWindow(hwnd1)
+注:此函数一般用在绑定以后，窗口句柄改变了的情况。如果必须不解绑，那么此函数就很有用了。
+]]
+function DMCenter:SwitchBindWindow(hwnd)
+    return CPLUS.DmCenter.SwitchBindWindow(hwnd) == 1
+end
+
+
+--[[
+解除绑定窗口,并释放系统资源.一般在OnScriptExit调用
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+Sub OnScriptExit()
+    dm_ret = dm.UnBindWindow() 
+End Sub
+]]
+function DMCenter:UnBindWindow()
+    return CPLUS.DmCenter.UnBindWindow() == 1
+end
+
+
+
+
+----------------------------------窗口-----------------------------------------------
+--[[
+把窗口坐标转换为屏幕坐标 
+hwnd 整形数: 指定的窗口句柄
+x 变参指针: 窗口X坐标
+y 变参指针: 窗口Y坐标
+返回值: table{x=0,y=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+x = 0:y = 0 
+dm_ret = dm.ClientToScreen(hwnd,x,y) 
+]]
+function DMCenter:ClientToScreen(hwnd,x,y)
+    return CPLUS.DmCenter.ClientToScreen(hwnd,x,y)
+end
+
+
+
+--[[
+根据指定进程名,枚举系统中符合条件的进程PID,并且按照进程打开顺序排序
+name 字符串:进程名,比如qq.exe
+返回值:
+字符串 :
+返回所有匹配的进程PID,并按打开顺序排序,格式"pid1,pid2,pid3"
+示例:
+pids = dm.EnumProcess("notepad.exe")
+pids = split(pids,",")
+转换为数组后,就可以处理了
+这里注意, pids数组里的是字符串,要用于使用,还得强制类型转换,比如clng(pids(0))
+]]
+function DMCenter:EnumProcess(name)
+    return CPLUS.DmCenter.EnumProcess(name)
+end
+
+
+--[[
+根据指定条件,枚举系统中符合条件的窗口,可以枚举到按键自带的无法枚举到的窗口
+parent 整形数: 获得的窗口句柄是该窗口的子窗口的窗口句柄,取0时为获得桌面句柄
+title 字符串: 窗口标题. 此参数是模糊匹配.
+class_name 字符串: 窗口类名. 此参数是模糊匹配.
+filter整形数: 取值定义如下
+1 : 匹配窗口标题,参数title有效 
+2 : 匹配窗口类名,参数class_name有效.
+4 : 只匹配指定父窗口的第一层孩子窗口
+8 : 匹配父窗口为0的窗口,即顶级窗口
+16 : 匹配可见的窗口
+32 : 匹配出的窗口按照窗口打开顺序依次排列
+这些值可以相加,比如4+8+16就是类似于任务管理器中的窗口列表
+返回值:
+字符串 :
+返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
+示例:
+hwnds = dm.EnumWindow(0,"QQ三国","",1+4+8+16)
+这句是获取到所有标题栏中有QQ三国这个字符串的窗口句柄集合
+hwnds = split(hwnds,",")
+转换为数组后,就可以处理了
+这里注意,hwnds数组里的是字符串,要用于使用,比如BindWindow时,还得强制类型转换,比如int(hwnds(0))
+]]
+function DMCenter:EnumWindow(parent,title,class_name,filter)
+    return CPLUS.DmCenter.EnumWindow(parent,title,class_name,filter)
+end
+
+
+
+
+--[[
+根据指定进程以及其它条件,枚举系统中符合条件的窗口,可以枚举到按键自带的无法枚举到的窗口
+process_name 字符串: 进程映像名.比如(svchost.exe). 此参数是精确匹配,但不区分大小写.
+title 字符串: 窗口标题. 此参数是模糊匹配.
+class_name 字符串: 窗口类名. 此参数是模糊匹配.
+filter 整形数: 取值定义如下
+1 : 匹配窗口标题,参数title有效
+2 : 匹配窗口类名,参数class_name有效
+4 : 只匹配指定映像的所对应的第一个进程. 可能有很多同映像名的进程，只匹配第一个进程的.
+8 : 匹配父窗口为0的窗口,即顶级窗口
+16 : 匹配可见的窗口
+32 : 匹配出的窗口按照窗口打开顺序依次排列
+这些值可以相加,比如4+8+16
+返回值:
+字符串
+返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
+示例:
+hwnds = dm.EnumWindowByProcess("game.exe","天龙八部","",1+8+16)
+这句是获取到所有标题栏中有"天龙八部"这个字符串的窗口句柄集合,并且所在进程是"game.exe"指定的进程集合.
+hwnds = split(hwnds,",")
+转换为数组后,就可以处理了
+这里注意,hwnds数组里的是字符串,要用于使用,比如BindWindow时,还得强制类型转换,比如int(hwnds(0))
+]]
+function DMCenter:EnumWindowByProcess(process_name,title,class_name,filter)
+    return CPLUS.DmCenter.EnumWindowByProcess(process_name,title,class_name,filter)
+end
+
+
+
+--[[
+根据指定进程pid以及其它条件,枚举系统中符合条件的窗口,可以枚举到按键自带的无法枚举到的窗口
+pid 整形数: 进程pid.
+title 字符串: 窗口标题. 此参数是模糊匹配.
+class_name 字符串: 窗口类名. 此参数是模糊匹配.
+filter 整形数: 取值定义如下
+1 : 匹配窗口标题,参数title有效
+2 : 匹配窗口类名,参数class_name有效
+8 : 匹配父窗口为0的窗口,即顶级窗口
+16 : 匹配可见的窗口
+这些值可以相加,比如2+8+16
+返回值:
+字符串:
+返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
+示例:
+hwnds = dm.EnumWindowByProcessId(1124,"天龙八部","",1+8+16)
+这句是获取到所有标题栏中有"天龙八部"这个字符串的窗口句柄集合,并且所在进程是1124指定的进程.
+hwnds = split(hwnds,",")
+转换为数组后,就可以处理了
+这里注意,hwnds数组里的是字符串,要用于使用,比如BindWindow时,还得强制类型转换,比如int(hwnds(0))
+]]
+function DMCenter:EnumWindowByProcessId(pid,title,class_name,filter)
+    return CPLUS.DmCenter.EnumWindowByProcessId(pid,title,class_name,filter)
+end
+
+
+
+
+
+
+--[[
+根据两组设定条件来枚举指定窗口.
+spec1 字符串: 查找串1. (内容取决于flag1的值)
+flag1整形数: 取值如下:
+   0表示spec1的内容是标题
+   1表示spec1的内容是程序名字. (比如notepad)
+   2表示spec1的内容是类名
+   3表示spec1的内容是程序路径.(不包含盘符,比如\windows\system32)
+   4表示spec1的内容是父句柄.(十进制表达的串)
+   5表示spec1的内容是父窗口标题
+   6表示spec1的内容是父窗口类名
+   7表示spec1的内容是顶级窗口句柄.(十进制表达的串)
+   8表示spec1的内容是顶级窗口标题
+   9表示spec1的内容是顶级窗口类名
+type1 整形数: 取值如下
+0精确判断
+1模糊判断
+spec2 字符串: 查找串2. (内容取决于flag2的值)
+flag2 整形数: 取值如下:
+   0表示spec2的内容是标题
+   1表示spec2的内容是程序名字. (比如notepad)
+   2表示spec2的内容是类名
+   3表示spec2的内容是程序路径.(不包含盘符,比如\windows\system32)
+   4表示spec2的内容是父句柄.(十进制表达的串)
+   5表示spec2的内容是父窗口标题
+   6表示spec2的内容是父窗口类名
+   7表示spec2的内容是顶级窗口句柄.(十进制表达的串)
+   8表示spec2的内容是顶级窗口标题
+   9表示spec2的内容是顶级窗口类名
+type2  整形数: 取值如下
+0精确判断
+1模糊判断
+sort  整形数: 取值如下
+0不排序.
+1对枚举出的窗口进行排序,按照窗口打开顺序.
+返回值:
+字符串:
+返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
+示例:
+hwnds = dm.EnumWindowSuper("记事本",0,1,"notepad",1,0,0) 
+hwnds = split(hwnds,",")
+转换为数组后,就可以处理了
+这里注意,hwnds数组里的是字符串,要用于使用,比如BindWindow时,还得强制类型转换,比如int(hwnds(0))
+]]
+function DMCenter:EnumWindowSuper(spec1,flag1,type1,spec2,flag2,type2,sort)
+    return CPLUS.DmCenter.EnumWindowSuper(spec1,flag1,type1,spec2,flag2,type2,sort)
+end
+
+
+--[[
+查找符合类名或者标题名的顶层可见窗口
+class 字符串: 窗口类名，如果为空，则匹配所有. 这里的匹配是模糊匹配.
+title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是模糊匹配.
+返回值:
+整形数:
+整形数表示的窗口句柄，没找到返回0
+示例:
+hwnd = dm.FindWindow("","记事本") 
+]]
+function DMCenter:FindWindow(class,title)
+    return CPLUS.DmCenter.FindWindow(class,title)
+end
+
+
+
+--[[
+根据指定的进程名字，来查找可见窗口.
+process_name 字符串: 进程名. 比如(notepad.exe).这里是精确匹配,但不区分大小写.
+class 字符串: 窗口类名，如果为空，则匹配所有. 这里的匹配是模糊匹配.
+title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是模糊匹配.
+返回值:
+整形数:
+整形数表示的窗口句柄，没找到返回0
+示例:
+hwnd = dm.FindWindowByProcess("noteapd.exe","","记事本") 
+]]
+function DMCenter:FindWindowByProcess(process_name,class,title)
+    return CPLUS.DmCenter.FindWindowByProcess(process_name,class,title)
+end
+
+
+
+
+
+
+--[[
+根据指定的进程Id，来查找可见窗口.
+process_id 整形数: 进程id. 
+class 字符串: 窗口类名，如果为空，则匹配所有. 这里的匹配是模糊匹配.
+title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是模糊匹配.
+返回值:
+整形数:
+整形数表示的窗口句柄，没找到返回0
+示例:
+hwnd = dm.FindWindowByProcessId(123456,"","记事本") 
+]]
+function DMCenter:FindWindowByProcessId(process_id,class,title)
+    return CPLUS.DmCenter.FindWindowByProcessId(process_id,class,title)
+end
+
+
+
+--[[
+查找符合类名或者标题名的顶层可见窗口,如果指定了parent,则在parent的第一层子窗口中查找.
+parent 整形数: 父窗口句柄，如果为空，则匹配所有顶层窗口
+class 字符串: 窗口类名，如果为空，则匹配所有. 这里的匹配是模糊匹配.
+title 字符串: 窗口标题,如果为空，则匹配所有. 这里的匹配是模糊匹配.
+返回值:
+整形数:
+整形数表示的窗口句柄，没找到返回0
+示例:
+hwnd = dm.FindWindowEx(0,"","记事本") 
+]]
+function DMCenter:FindWindowEx(parent,class,title)
+    return CPLUS.DmCenter.FindWindowEx(parent,class,title)
+end
+
+
+
+
+--[[
+根据两组设定条件来查找指定窗口. 
+spec1 字符串: 查找串1. (内容取决于flag1的值)
+flag1整形数: 取值如下:
+   0表示spec1的内容是标题
+   1表示spec1的内容是程序名字. (比如notepad)
+   2表示spec1的内容是类名
+   3表示spec1的内容是程序路径.(不包含盘符,比如\windows\system32)
+   4表示spec1的内容是父句柄.(十进制表达的串)
+   5表示spec1的内容是父窗口标题
+   6表示spec1的内容是父窗口类名
+   7表示spec1的内容是顶级窗口句柄.(十进制表达的串)
+   8表示spec1的内容是顶级窗口标题
+   9表示spec1的内容是顶级窗口类名
+type1 整形数: 取值如下
+0精确判断
+1模糊判断
+spec2 字符串: 查找串2. (内容取决于flag2的值)
+flag2 整形数: 取值如下:
+   0表示spec2的内容是标题
+   1表示spec2的内容是程序名字. (比如notepad)
+   2表示spec2的内容是类名
+   3表示spec2的内容是程序路径.(不包含盘符,比如\windows\system32)
+   4表示spec2的内容是父句柄.(十进制表达的串)
+   5表示spec2的内容是父窗口标题
+   6表示spec2的内容是父窗口类名
+   7表示spec2的内容是顶级窗口句柄.(十进制表达的串)
+   8表示spec2的内容是顶级窗口标题
+   9表示spec2的内容是顶级窗口类名
+type2  整形数: 取值如下
+0精确判断
+1模糊判断
+返回值:
+整形数:
+整形数表示的窗口句柄，没找到返回0
+示例:
+hwnd = dm.FindWindowSuper("记事本",0,1,"notepad",1,0) 
+]]
+function DMCenter:FindWindowSuper(spec1,flag1,type1,spec2,flag2,type2)
+    return CPLUS.DmCenter.FindWindowSuper(spec1,flag1,type1,spec2,flag2,type2)
+end
+
+
+
+
+
+--[[
+获取窗口客户区域在屏幕上的位置
+hwnd 整形数: 指定的窗口句柄
+x1 变参指针: 返回窗口客户区左上角X坐标
+y1 变参指针: 返回窗口客户区左上角Y坐标
+x2 变参指针: 返回窗口客户区右下角X坐标
+y2 变参指针: 返回窗口客户区右下角Y坐标
+返回值: table {x1=0,x2=0,y1=0,y2=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.GetClientRect(hwnd,x1,y1,x2,y2)
+]]
+function DMCenter:GetClientRect(hwnd)
+    return CPLUS.DmCenter.GetClientRect(hwnd)
+end
+
+
+
+
+
+
+
+
+
+
+--[[
+获取窗口客户区域的宽度和高度
+hwnd 整形数: 指定的窗口句柄
+width 变参指针: 宽度
+height 变参指针: 高度
+返回值:  table{width=0,height=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.GetClientSize(hwnd,w,h) 
+TracePrint "宽度:"& w &",高度:"& h
+]]
+function DMCenter:GetClientSize(hwnd)
+    return CPLUS.DmCenter.GetClientSize(hwnd)
+end
+
+
+
+
+--[[
+获取顶层活动窗口中具有输入焦点的窗口句柄 
+返回值:
+整形数:
+返回整型表示的窗口句柄
+]]
+function DMCenter:GetForegroundFocus()
+    return CPLUS.DmCenter.GetForegroundFocus()
+end
+
+
+
+
+
+
+--[[
+获取顶层活动窗口,可以获取到按键自带插件无法获取到的句柄
+返回值:
+整形数:
+返回整型表示的窗口句柄
+]]
+function DMCenter:GetForegroundWindow()
+    return CPLUS.DmCenter.GetForegroundWindow()
+end
+
+
+
+
+
+
+--[[
+获取鼠标指向的可见窗口句柄,可以获取到按键自带的插件无法获取到的句柄
+返回值:
+整形数:
+返回整型表示的窗口句柄
+]]
+function DMCenter:GetMousePointWindow()
+    return CPLUS.DmCenter.GetMousePointWindow()
+end
+
+
+
+
+
+--[[
+获取给定坐标的可见窗口句柄,可以获取到按键自带的插件无法获取到的句柄
+X 整形数: 屏幕X坐标
+Y 整形数: 屏幕Y坐标
+返回值:
+整形数:
+返回整型表示的窗口句柄
+]]
+function DMCenter:GetPointWindow(x,y)
+    return CPLUS.DmCenter.GetPointWindow(x,y)
+end
+
+
+
+
+
+--[[
+根据指定的pid获取进程详细信息,(进程名,进程全路径,CPU占用率(百分比),内存占用量(字节))
+pid 整形数: 进程pid 
+返回值:
+字符串:
+格式"进程名|进程路径|cpu|内存"
+示例:
+infos = dm.GetProcessInfo(1348) 
+infos = split(infos,"|")
+TracePrint "进程名:"&infos(0)
+TracePrint "进程路径:"&infos(1)
+TracePrint "进程CPU占用率(百分比):"&infos(2)
+TracePrint "进程内存占用量(字节):"&infos(3)
+注: 有些时候有保护的时候，此函数返回内容会错误，那么此时可以尝试用memory保护盾来试试看.
+]]
+function DMCenter:GetProcessInfo(pid)
+    return CPLUS.DmCenter.GetProcessInfo(pid)
+end
+
+
+
+
+
+--[[
+获取特殊窗口
+Flag 整形数: 取值定义如下
+0 : 获取桌面窗口
+1 : 获取任务栏窗口
+返回值:
+整形数:
+以整型数表示的窗口句柄
+示例:
+desk_win = dm.GetSpecialWindow(0) 
+]]
+function DMCenter:GetSpecialWindow(flag)
+    return CPLUS.DmCenter.GetSpecialWindow(flag)
+end
+
+
+
+
+
+
+--[[
+获取给定窗口相关的窗口句柄
+hwnd 整形数: 窗口句柄
+flag 整形数: 取值定义如下
+0 : 获取父窗口
+1 : 获取第一个儿子窗口
+2 : 获取First 窗口
+3 : 获取Last窗口
+4 : 获取下一个窗口
+5 : 获取上一个窗口
+6 : 获取拥有者窗口
+7 : 获取顶层窗口
+返回值:
+整形数:
+返回整型表示的窗口句柄
+示例:
+own_hwnd = dm.GetWindow(hwnd,6)
+]]
+function DMCenter:GetWindow(hwnd,flag)
+    return CPLUS.DmCenter.GetWindow(hwnd,flag)
+end
+
+
+
+
+--[[
+获取窗口的类名
+hwnd 整形数: 指定的窗口句柄
+返回值:
+字符串:
+窗口的类名
+]]
+function DMCenter:GetWindowClass(hwnd)
+    return CPLUS.DmCenter.GetWindowClass(hwnd)
+end
+
+
+
+
+
+--[[
+获取指定窗口所在的进程ID.
+hwnd 整形数: 窗口句柄
+返回值:
+整形数:
+返回整型表示的是进程ID
+]]
+function DMCenter:GetWindowProcessId(hwnd)
+    return CPLUS.DmCenter.GetWindowProcessId(hwnd)
+end
+
+
+
+
+--[[
+获取指定窗口所在的进程的exe文件全路径.
+hwnd 整形数: 窗口句柄
+返回值:
+字符串:
+返回字符串表示的是exe全路径名
+]]
+function DMCenter:GetWindowProcessPath(hwnd)
+    return CPLUS.DmCenter.GetWindowProcessPath(hwnd)
+end
+
+
+
+
+--[[
+获取窗口在屏幕上的位置
+hwnd 整形数: 指定的窗口句柄
+x1 变参指针: 返回窗口左上角X坐标
+y1 变参指针: 返回窗口左上角Y坐标
+x2 变参指针: 返回窗口右下角X坐标
+y2 变参指针: 返回窗口右下角Y坐标
+返回值:  table{x1=0,y1=0,x2=0,y2=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.GetWindowRect(hwnd,x1,y1,x2,y2)
+]]
+function DMCenter:GetWindowRect(hwnd)
+    return CPLUS.DmCenter.GetWindowRect(hwnd)
+end
+
+
+
+
+--[[
+获取指定窗口的一些属性
+hwnd 整形数: 指定的窗口句柄
+flag 整形数: 取值定义如下
+0 : 判断窗口是否存在
+1 : 判断窗口是否处于激活
+2 : 判断窗口是否可见
+3 : 判断窗口是否最小化
+4 : 判断窗口是否最大化
+5 : 判断窗口是否置顶
+6 : 判断窗口是否无响应
+7 : 判断窗口是否可用(灰色为不可用)
+8 : 另外的方式判断窗口是否无响应,如果6无效可以尝试这个
+9 : 判断窗口所在进程是不是64位
+返回值:
+整形数:
+0: 不满足条件
+1: 满足条件
+示例:
+dm_ret = dm.GetWindowState(hwnd,3) 
+If dm_ret = 1 Then
+    MessageBox "窗口已经最小化了"
+End If
+]]
+function DMCenter:GetWindowState(hwnd,flag)
+    return CPLUS.DmCenter.GetWindowState(hwnd,flag)
+end
+
+
+
+
+--[[
+获取窗口的标题
+hwnd 整形数: 指定的窗口句柄
+返回值:
+字符串:
+窗口的标题
+]]
+function DMCenter:GetWindowTitle(hwnd)
+    return CPLUS.DmCenter.GetWindowTitle(hwnd)
+end
+
+
+
+--[[
+移动指定窗口到指定位置
+hwnd 整形数: 指定的窗口句柄
+x 整形数: X坐标
+y 整形数: Y坐标
+返回值:
+整形数:
+0: 失败
+1: 成功
+]]
+function DMCenter:MoveWindow(hwnd,x,y)
+    return CPLUS.DmCenter.MoveWindow(hwnd,x,y) == 1
+end
+
+
+
+
+
+--[[
+把屏幕坐标转换为窗口坐标
+hwnd 整形数: 指定的窗口句柄
+x 变参指针: 屏幕X坐标
+y 变参指针: 屏幕Y坐标
+返回值: table{x=0,y=0}
+整形数:
+0: 失败
+1: 成功
+示例:
+x = 100:y = 100 
+dm_ret = dm.ScreenToClient(hwnd,x,y) 
+]]
+function DMCenter:ScreenToClient(hwnd)
+    return CPLUS.DmCenter.ScreenToClient(hwnd)
+end
+
+
+
+
+--[[
+向指定窗口发送粘贴命令. 把剪贴板的内容发送到目标窗口.
+hwnd 整形数: 指定的窗口句柄. 如果为0,则对当前激活的窗口发送.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SetClipboard "abcd"
+dm.SendPaste hwnd
+注:剪贴板是公共资源，多个线程同时设置剪贴板时,会产生冲突，必须用互斥信号保护.
+]]
+function DMCenter:SendPaste(hwnd)
+    return CPLUS.DmCenter.SendPaste(hwnd) == 1
+end
+
+
+
+
+--[[
+向指定窗口发送文本数据
+hwnd 整形数: 指定的窗口句柄. 如果为0,则对当前激活的窗口发送.
+str 字符串: 发送的文本数据
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SendString hwnd,"我是来测试的"
+注： 有时候发送中文，可能会大部分机器正常，少部分会乱码。这种情况一般有两个可能
+1. 系统编码没有设置为GBK
+2. 目标程序里可能安装了改变当前编码的软件，比如常见的是输入法. （尝试卸载）
+]]
+function DMCenter:SendString(hwnd,str)
+    return CPLUS.DmCenter.SendString(hwnd,str) == 1
+end
+
+
+
+
+
+
+--[[
+向指定窗口发送文本数据
+hwnd 整形数: 指定的窗口句柄. 如果为0,则对当前激活的窗口发送.
+str 字符串: 发送的文本数据
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm.SendString2 hwnd,"我是来测试的"
+注: 此接口为老的SendString，如果新的SendString不能输入，可以尝试此接口.
+有时候发送中文，可能会大部分机器正常，少部分会乱码。这种情况一般有两个可能
+1. 系统编码没有设置为GBK
+2. 目标程序里可能安装了改变当前编码的软件，比如常见的是输入法. （尝试卸载）
+]]
+function DMCenter:SendString2(hwnd,str)
+    return CPLUS.DmCenter.SendString2(hwnd,str) == 1
+end
+
+
+
+
+
+--[[
+向绑定的窗口发送文本数据.必须配合dx.public.input.ime属性.
+str 字符串: 发送的文本数据
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.BindWindowEx(hwnd,"normal","normal","normal","dx.public.input.ime",0)
+dm.SendStringIme "我是来测试的"
+]]
+function DMCenter:SendStringIme(str)
+    return CPLUS.DmCenter.SendStringIme(str) == 1
+end
+
+
+
+
+
+
+--[[
+利用真实的输入法，对指定的窗口输入文字.
+hwnd整形数: 窗口句柄
+str 字符串: 发送的文本数据
+mode整形数: 取值意义如下:
+            0 : 向hwnd的窗口输入文字(前提是必须先用模式200安装了输入法)
+            1 : 同模式0,如果由于保护无效，可以尝试此模式.(前提是必须先用模式200安装了输入法)
+            2 : 同模式0,如果由于保护无效，可以尝试此模式. (前提是必须先用模式200安装了输入法)
+            200 : 向系统中安装输入法,多次调用没问题. 全局只用安装一次.
+            300 : 卸载系统中的输入法. 全局只用卸载一次. 多次调用没关系.
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+If dm.SendStringIme2(hwnd,"",200) = 1 then
+      dm.SendStringIme2 hwnd,"我是来测试的",0
+      dm.SendStringIme2 hwnd,"abc",0
+      dm.SendStringIme2 hwnd,"123",0
+      dm.SendStringIme2 hwnd,"",300
+end if 
+注: 如果要同时对此窗口进行绑定，并且绑定的模式是1 3 5 7 101 103，那么您必须要在绑定之前,先执行加载输入法的操作. 否则会造成绑定失败!.
+卸载时，没有限制.
+还有，在后台输入时，如果目标窗口有判断是否在激活状态才接受输入文字,那么可以配合绑定窗口中的假激活属性来保证文字正常输入. 诸如此类. 基本上用这个没有输入不了的文字.
+比如
+BindWindow hwnd,"normal","normal","normal","dx.public.active.api|dx.public.active.message",0
+dm.SendStringIme2 hwnd,"哈哈",0
+]]
+function DMCenter:SendStringIme2(hwnd,str,mode)
+    return CPLUS.DmCenter.SendStringIme2(hwnd,str,mode) == 1
+end
+
+
+
+
+
+
+--[[
+设置窗口客户区域的宽度和高度
+hwnd 整形数: 指定的窗口句柄
+width 整形数: 宽度
+height 整形数: 高度
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.SetClientSize(hwnd,800,600) 
+]]
+function DMCenter:SetClientSize(hwnd,width,height)
+    return CPLUS.DmCenter.SetClientSize(hwnd,width,height) == 1
+end
+
+
+
+
+--[[
+设置窗口的大小
+hwnd 整形数: 指定的窗口句柄
+width 整形数: 宽度
+height 整形数: 高度
+返回值:
+整形数:
+0: 失败
+1: 成功
+]]
+function DMCenter:SetWindowSize(hwnd,width,height)
+    return CPLUS.DmCenter.SetWindowSize(hwnd,width,height) == 1
+end
+
+
+
+
+
+--[[
+设置窗口的状态
+hwnd 整形数: 指定的窗口句柄
+flag 整形数: 取值定义如下
+0 : 关闭指定窗口
+1 : 激活指定窗口
+2 : 最小化指定窗口,但不激活
+3 : 最小化指定窗口,并释放内存,但同时也会激活窗口.(释放内存可以考虑用FreeProcessMemory函数)
+4 : 最大化指定窗口,同时激活窗口.
+5 : 恢复指定窗口 ,但不激活
+6 : 隐藏指定窗口
+7 : 显示指定窗口
+8 : 置顶指定窗口
+9 : 取消置顶指定窗口
+10 : 禁止指定窗口
+11 : 取消禁止指定窗口
+12 : 恢复并激活指定窗口
+13 : 强制结束窗口所在进程.
+14 : 闪烁指定的窗口
+15 : 使指定的窗口获取输入焦点
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.SetWindowState(hwnd,0) 
+]]
+function DMCenter:SetWindowState(hwnd,flag)
+    return CPLUS.DmCenter.SetWindowState(hwnd,flag) == 1
+end
+
+
+
+
+--[[
+设置窗口的标题
+hwnd 整形数: 指定的窗口句柄
+titie 字符串: 标题
+返回值:
+整形数:
+0: 失败
+1: 成功
+]]
+function DMCenter:SetWindowText(hwnd,title)
+    return CPLUS.DmCenter.SetWindowText(hwnd,title) == 1
+end
+
+
+
+
+--[[
+设置窗口的透明度
+hwnd 整形数: 指定的窗口句柄
+trans 整形数: 透明度取值(0-255) 越小透明度越大 0为完全透明(不可见) 255为完全显示(不透明)
+返回值:
+整形数:
+0: 失败
+1: 成功
+示例:
+dm_ret = dm.SetWindowTransparent(hwnd,200) 
+]]
+function DMCenter:SetWindowTransparent(hwnd,trans)
+    return CPLUS.DmCenter.SetWindowTransparent(hwnd,trans) == 1
+end
+
+
+
+
+------------------------------------------------------------------
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
+function DMCenter:XXXXXX()
+    return CPLUS.DmCenter.XXXXX() == 1
+end
 
 return DMCenter
 

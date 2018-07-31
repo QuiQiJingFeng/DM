@@ -170,8 +170,7 @@ FValue DmCenter::ConvertToFValue(VARIANT var){
 }
 // 导入到Lua
 FValue DmCenter::Ver(FValueVector vector){
-	_bstr_t ret =__dm->Ver();
-	return FValue(ret);
+	return FValue(__dm->Ver());
 }
 
 FValue DmCenter::SetPath(FValueVector vector){
@@ -256,7 +255,7 @@ FValue DmCenter::UseDict(FValueVector vector){
 }
 
 FValue DmCenter::GetBasePath(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetBasePath());
 }
 
 FValue DmCenter::SetDictPwd(FValueVector vector){
@@ -369,7 +368,7 @@ FValue DmCenter::BGR2RGB(FValueVector vector){
 }
 
 FValue DmCenter::UnBindWindow(FValueVector vector){
-	return FValue();
+	return FValue(__dm->UnBindWindow());
 }
 
 FValue DmCenter::CmpColor(FValueVector vector){
@@ -381,11 +380,45 @@ FValue DmCenter::CmpColor(FValueVector vector){
 }
 
 FValue DmCenter::ClientToScreen(FValueVector vector){
+	long hndw = vector[0].asDouble();
+	long x = vector[1].asDouble();
+	long y = vector[2].asDouble();
+	VARIANT vx;
+	vx.lVal = x;
+	VARIANT vy;
+	vy.lVal = y;
+
+	long ret = __dm->ClientToScreen(hndw,&vx,&vy);
+	FValueMap map;
+	if (ret == 1)
+	{
+		map["x"] = ConvertToFValue(vx);
+		map["y"] = ConvertToFValue(vy);
+	}
+	else
+	{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
 	return FValue();
 }
 
 FValue DmCenter::ScreenToClient(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	VARIANT x,y;
+	long ret = __dm->ScreenToClient(hndw,&x,&y);
+ 	FValueMap map;
+	if (ret == 1)
+	{
+		map["x"] = ConvertToFValue(x);
+		map["y"] = ConvertToFValue(y);
+	}
+	else{
+		map["x"] = FValue(0);
+		map["y"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::ShowScrMsg(FValueVector vector){
@@ -520,15 +553,33 @@ FValue DmCenter::GetWordsNoDict(FValueVector vector){
 }
 
 FValue DmCenter::SetShowErrorMsg(FValueVector vector){
-	return FValue();
+	long show = vector[0].asDouble();
+	return FValue(__dm->SetShowErrorMsg(show));
 }
 
 FValue DmCenter::GetClientSize(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	VARIANT width,height;
+	long ret = __dm->GetClientSize(hndw, &width, &height);
+ 	FValueMap map;
+	if (ret == 1)
+	{
+		map["width"] = ConvertToFValue(width);
+		map["height"] = ConvertToFValue(height);
+	}
+	else{
+		map["width"] = FValue(0);
+		map["height"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::MoveWindow(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	long x = vector[1].asDouble();
+	long y = vector[2].asDouble();
+	return FValue(__dm->MoveWindow(hndw,x,y));
 }
 
 FValue DmCenter::GetColorHSV(FValueVector vector){
@@ -555,59 +606,100 @@ FValue DmCenter::GetAveHSV(FValueVector vector){
 }
 
 FValue DmCenter::GetForegroundWindow(FValueVector vector){
-	return FValue();
+
+	return FValue(__dm->GetForegroundWindow());
 }
 
 FValue DmCenter::GetForegroundFocus(FValueVector vector){
-	return FValue();
+
+	return FValue(__dm->GetForegroundFocus());
 }
 
 FValue DmCenter::GetMousePointWindow(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetMousePointWindow());
 }
 
 FValue DmCenter::GetPointWindow(FValueVector vector){
-	return FValue();
+	long x = vector[0].asDouble();
+	long y = vector[1].asDouble();
+	return FValue(__dm->GetPointWindow(x,y));
 }
 
 FValue DmCenter::EnumWindow(FValueVector vector){
-	return FValue();
+	long parent = vector[0].asDouble();
+	string title = vector[1].asString();
+	string class_name = vector[2].asString();
+	long filter = vector[3].asDouble();
+
+	return FValue(__dm->EnumWindow(parent,title.c_str(),class_name.c_str(),filter));
 }
 
 FValue DmCenter::GetWindowState(FValueVector vector){
-	return FValue();
+long hwnd = vector[0].asDouble();
+	long flag = vector[1].asDouble();
+	return FValue(__dm->GetWindowState(hwnd,flag));
 }
 
 FValue DmCenter::GetWindow(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	long flag = vector[1].asDouble();
+	return FValue(__dm->GetWindow(hwnd,flag));
 }
 
 FValue DmCenter::GetSpecialWindow(FValueVector vector){
-	return FValue();
+	long flag = vector[0].asDouble();
+	return FValue(__dm->GetSpecialWindow(flag));
 }
 
 FValue DmCenter::SetWindowText(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	string title = vector[1].asString();
+	return FValue(__dm->SetWindowText(hndw,title.c_str()));
 }
 
 FValue DmCenter::SetWindowSize(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	long width = vector[0].asDouble();
+	long height = vector[0].asDouble();
+	return FValue(__dm->SetClientSize(hndw,width,height));
 }
 
 FValue DmCenter::GetWindowRect(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	VARIANT x1, y1,x2,y2;
+	long ret = __dm->GetWindowRect(hndw,&x1,&y1,&x2,&y2);
+ 	FValueMap map;
+	if (ret == 1)
+	{
+		map["x1"] = ConvertToFValue(x1);
+		map["y1"] = ConvertToFValue(y1);
+		map["x2"] = ConvertToFValue(x2);
+		map["y2"] = ConvertToFValue(y2);
+	}
+	else{
+		map["x1"] = FValue(0);
+		map["y1"] = FValue(0);
+		map["x2"] = FValue(0);
+		map["y2"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::GetWindowTitle(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->GetWindowTitle(hwnd));
 }
 
 FValue DmCenter::GetWindowClass(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->GetWindowClass(hwnd));
 }
 
 FValue DmCenter::SetWindowState(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	long flag = vector[1].asDouble();
+	return FValue(__dm->SetWindowState(hndw,flag));
 }
 
 FValue DmCenter::CreateFoobarRect(FValueVector vector){
@@ -749,7 +841,10 @@ FValue DmCenter::SetEnv(FValueVector vector){
 }
 
 FValue DmCenter::SendString(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	string str = vector[1].asString();
+
+	return FValue(__dm->SendString(hndw,str.c_str()));
 }
 
 FValue DmCenter::DelEnv(FValueVector vector){
@@ -757,7 +852,7 @@ FValue DmCenter::DelEnv(FValueVector vector){
 }
 
 FValue DmCenter::GetPath(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetPath());
 }
 
 FValue DmCenter::SetDict(FValueVector vector){
@@ -806,7 +901,10 @@ FValue DmCenter::FindPicEx(FValueVector vector){
 }
 
 FValue DmCenter::SetClientSize(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	long width = vector[1].asDouble();
+	long height = vector[2].asDouble();
+	return FValue(__dm->SetClientSize(hndw,width,height));
 }
 
 FValue DmCenter::ReadInt(FValueVector vector){
@@ -944,7 +1042,9 @@ FValue DmCenter::DisAssemble(FValueVector vector){
 }
 
 FValue DmCenter::SetWindowTransparent(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	long trans = vector[1].asDouble();
+	return FValue(__dm->SetWindowTransparent(hndw,trans));
 }
 
 FValue DmCenter::ReadData(FValueVector vector){
@@ -1041,7 +1141,8 @@ FValue DmCenter::OcrEx(FValueVector vector){
 }
 
 FValue DmCenter::SetDisplayInput(FValueVector vector){
-	return FValue();
+	string mode = vector[0].asString();
+	return FValue(__dm->SetDisplayInput(mode.c_str()));
 }
 
 FValue DmCenter::GetTime(FValueVector vector){
@@ -1057,7 +1158,13 @@ FValue DmCenter::GetScreenHeight(FValueVector vector){
 }
 
 FValue DmCenter::BindWindowEx(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	string display = vector[1].asString();
+	string mouse = vector[2].asString();
+	string keypad = vector[3].asString();
+	string pub = vector[4].asString();
+	long mode = vector[5].asDouble();
+	return FValue(__dm->BindWindowEx(hwnd, display.c_str(), mouse.c_str(), keypad.c_str(), pub.c_str(), mode));
 }
 
 FValue DmCenter::GetDiskSerial(FValueVector vector){
@@ -1089,11 +1196,19 @@ FValue DmCenter::GetCursorPos(FValueVector vector){
 }
 
 FValue DmCenter::BindWindow(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	string display = vector[1].asString();
+	string mouse = vector[2].asString();
+	string keypad = vector[3].asString();
+	long mode = vector[4].asDouble();
+
+	return FValue(__dm->BindWindow(hwnd, display.c_str(), mouse.c_str(), keypad.c_str(), mode));
 }
 
 FValue DmCenter::FindWindow(FValueVector vector){
-	return FValue();
+	string cls = vector[0].asString();
+	string title = vector[1].asString();
+	return FValue(__dm->FindWindow(cls.c_str(),title.c_str()));
 }
 
 FValue DmCenter::GetScreenDepth(FValueVector vector){
@@ -1117,7 +1232,10 @@ FValue DmCenter::GetOsType(FValueVector vector){
 }
 
 FValue DmCenter::FindWindowEx(FValueVector vector){
-	return FValue();
+	string parent = vector[0].asString();
+	string cls = vector[1].asString();
+	string title = vector[2].asString();
+	return FValue(__dm->FindWindowByProcess(parent.c_str(),cls.c_str(),title.c_str()));
 }
 
 FValue DmCenter::SetExportDict(FValueVector vector){
@@ -1129,7 +1247,8 @@ FValue DmCenter::GetCursorShape(FValueVector vector){
 }
 
 FValue DmCenter::DownCpu(FValueVector vector){
-	return FValue();
+	long rate = vector[0].asDouble();
+	return FValue(__dm->DownCpu(rate));
 }
 
 FValue DmCenter::GetCursorSpot(FValueVector vector){
@@ -1137,7 +1256,10 @@ FValue DmCenter::GetCursorSpot(FValueVector vector){
 }
 
 FValue DmCenter::SendString2(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	string str = vector[1].asString();
+
+	return FValue(__dm->SendString2(hndw,str.c_str()));
 }
 
 FValue DmCenter::FaqPost(FValueVector vector){
@@ -1245,15 +1367,18 @@ FValue DmCenter::SaveDict(FValueVector vector)
 }
 
 FValue DmCenter::GetWindowProcessId(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->GetWindowProcessId(hwnd));
 }
 
 FValue DmCenter::GetWindowProcessPath(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->GetWindowProcessPath(hwnd));
 }
 
 FValue DmCenter::LockInput(FValueVector vector){
-	return FValue();
+	long lock = vector[0].asDouble();
+	return FValue(__dm->LockInput(lock));
 }
 
 FValue DmCenter::GetPicSize(FValueVector vector){
@@ -1263,7 +1388,7 @@ FValue DmCenter::GetPicSize(FValueVector vector){
 }
 
 FValue DmCenter::GetID(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetID());
 }
 
 FValue DmCenter::CapturePng(FValueVector vector){
@@ -1351,7 +1476,10 @@ FValue DmCenter::CapturePre(FValueVector vector){
 }
 
 FValue DmCenter::RegEx(FValueVector vector){
-	return FValue();
+	string reg_code = vector[0].asString();
+	string ver_info = vector[1].asString();
+
+	return FValue(__dm->Reg(reg_code.c_str(), ver_info.c_str()));
 }
 
 FValue DmCenter::GetMachineCode(FValueVector vector){
@@ -1385,7 +1513,12 @@ FValue DmCenter::GetColorNum(FValueVector vector){
 }
 
 FValue DmCenter::EnumWindowByProcess(FValueVector vector){
-	return FValue();
+	string process_name = vector[0].asString();
+	string title = vector[1].asString();
+	string class_name = vector[2].asString();
+	long filter = vector[3].asDouble();
+
+	return FValue(__dm->EnumWindowByProcess(process_name.c_str(), title.c_str(), class_name.c_str(), filter));
 }
 
 FValue DmCenter::GetDictCount(FValueVector vector){
@@ -1394,7 +1527,7 @@ FValue DmCenter::GetDictCount(FValueVector vector){
 }
 
 FValue DmCenter::GetLastError(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetLastError());
 }
 
 FValue DmCenter::GetNetTime(FValueVector vector){
@@ -1427,11 +1560,17 @@ FValue DmCenter::SetDisplayAcceler(FValueVector vector){
 }
 
 FValue DmCenter::FindWindowByProcess(FValueVector vector){
-	return FValue();
+	string process_name = vector[0].asString();
+	string cls = vector[1].asString();
+	string title = vector[2].asString();
+	return FValue(__dm->FindWindowByProcess(process_name.c_str(),cls.c_str(),title.c_str()));
 }
 
 FValue DmCenter::FindWindowByProcessId(FValueVector vector){
-	return FValue();
+	long process_id = vector[0].asDouble();
+	string cls = vector[1].asString();
+	string title = vector[2].asString();
+	return FValue(__dm->FindWindowByProcessId(process_id,cls.c_str(),title.c_str()));
 }
 
 FValue DmCenter::ReadIni(FValueVector vector){
@@ -1451,7 +1590,13 @@ FValue DmCenter::delay(FValueVector vector){
 }
 
 FValue DmCenter::FindWindowSuper(FValueVector vector){
-	return FValue();
+	string spec1 = vector[0].asString();
+	long flag1 = vector[1].asDouble();
+	long type1 = vector[2].asDouble();
+	string spec2 = vector[3].asString();
+	long flag2 = vector[4].asDouble();
+	long type2 = vector[5].asDouble();
+	return FValue(__dm->FindWindowSuper(spec1.c_str(), flag1, type1, spec2.c_str(), flag2, type2));
 }
 
 FValue DmCenter::ExcludePos(FValueVector vector){
@@ -1542,7 +1687,8 @@ FValue DmCenter::GetNetTimeSafe(FValueVector vector){
 }
 
 FValue DmCenter::ForceUnBindWindow(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->ForceUnBindWindow(hwnd));
 }
 
 FValue DmCenter::ReadIniPwd(FValueVector vector){
@@ -1577,15 +1723,21 @@ FValue DmCenter::KeyPressStr(FValueVector vector){
 }
 
 FValue DmCenter::EnableKeypadPatch(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+
+	return FValue(__dm->EnableKeypadPatch(enable));
 }
 
 FValue DmCenter::EnableKeypadSync(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	long time_out = vector[1].asDouble();
+	return FValue(__dm->EnableKeypadSync(enable,time_out));
 }
 
 FValue DmCenter::EnableMouseSync(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	long time_out = vector[1].asDouble();
+	return FValue(__dm->EnableMouseSync(enable, time_out));
 }
 
 FValue DmCenter::DmGuard(FValueVector vector){
@@ -1617,15 +1769,20 @@ FValue DmCenter::FindDataEx(FValueVector vector){
 }
 
 FValue DmCenter::EnableRealMouse(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	long mousedelay = vector[1].asDouble();
+	long mousestep = vector[2].asDouble();
+	return FValue(__dm->EnableRealMouse(enable, mousedelay, mousestep));
 }
 
 FValue DmCenter::EnableRealKeypad(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableRealKeypad(enable));
 }
 
 FValue DmCenter::SendStringIme(FValueVector vector){
-	return FValue();
+	string str = vector[0].asString();
+	return FValue(__dm->SendStringIme(str.c_str()));
 }
 
 FValue DmCenter::FoobarDrawLine(FValueVector vector){
@@ -1645,15 +1802,17 @@ FValue DmCenter::FindStrEx(FValueVector vector){
 }
 
 FValue DmCenter::IsBind(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->IsBind(hwnd));
 }
 
 FValue DmCenter::SetDisplayDelay(FValueVector vector){
-	return FValue();
+	long time = vector[0].asDouble();
+	return FValue(__dm->SetDisplayDelay(time));
 }
 
 FValue DmCenter::GetDmCount(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetDmCount());
 }
 
 FValue DmCenter::DisableScreenSave(FValueVector vector){
@@ -1850,11 +2009,30 @@ FValue DmCenter::GetMachineCodeNoMac(FValueVector vector){
 }
 
 FValue DmCenter::GetClientRect(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	VARIANT x1, y1,x2,y2;
+	long ret = __dm->GetClientRect(hndw,&x1,&y1,&x2,&y2);
+ 	FValueMap map;
+	if (ret == 1)
+	{
+		map["x1"] = ConvertToFValue(x1);
+		map["y1"] = ConvertToFValue(y1);
+		map["x2"] = ConvertToFValue(x2);
+		map["y2"] = ConvertToFValue(y2);
+	}
+	else{
+		map["x1"] = FValue(0);
+		map["y1"] = FValue(0);
+		map["x2"] = FValue(0);
+		map["y2"] = FValue(0);
+	}
+
+	return FValue(map);
 }
 
 FValue DmCenter::EnableFakeActive(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableFakeActive(enable));
 }
 
 FValue DmCenter::GetScreenDataBmp(FValueVector vector){
@@ -1894,7 +2072,8 @@ FValue DmCenter::SetMemoryFindResultToFile(FValueVector vector){
 }
 
 FValue DmCenter::EnableBind(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableBind(enable));
 }
 
 FValue DmCenter::SetSimMode(FValueVector vector){
@@ -1903,11 +2082,16 @@ FValue DmCenter::SetSimMode(FValueVector vector){
 }
 
 FValue DmCenter::LockMouseRect(FValueVector vector){
-	return FValue();
+	long x1 = vector[0].asDouble();
+	long y1 = vector[1].asDouble();
+	long x2 = vector[2].asDouble();
+	long y2 = vector[3].asDouble();
+	return FValue(__dm->LockMouseRect(x1,y1,x2,y2));
 }
 
 FValue DmCenter::SendPaste(FValueVector vector){
-	return FValue();
+	long hndw = vector[0].asDouble();
+	return FValue(__dm->SendPaste(hndw));
 }
 
 FValue DmCenter::IsDisplayDead(FValueVector vector){
@@ -1971,15 +2155,20 @@ FValue DmCenter::DeleteIniPwd(FValueVector vector){
 }
 
 FValue DmCenter::EnableSpeedDx(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableSpeedDx(enable));
 }
 
 FValue DmCenter::EnableIme(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnableIme(enable));
 }
 
 FValue DmCenter::Reg(FValueVector vector){
-	return FValue();
+	string reg_code = vector[0].asString();
+	string ver_info = vector[1].asString();
+ 
+	return FValue(__dm->Reg(reg_code.c_str(),ver_info.c_str()));
 }
 
 FValue DmCenter::SelectFile(FValueVector vector){
@@ -1991,7 +2180,8 @@ FValue DmCenter::SelectDirectory(FValueVector vector){
 }
 
 FValue DmCenter::LockDisplay(FValueVector vector){
-	return FValue();
+	long lock = vector[0].asDouble();
+	return FValue(__dm->LockDisplay(lock));
 }
 
 FValue DmCenter::FoobarSetSave(FValueVector vector){
@@ -1999,7 +2189,15 @@ FValue DmCenter::FoobarSetSave(FValueVector vector){
 }
 
 FValue DmCenter::EnumWindowSuper(FValueVector vector){
-	return FValue();
+	string spec1 = vector[0].asString();
+	long flag1 = vector[1].asDouble();
+	long type1 = vector[2].asDouble();
+	string spec2 = vector[3].asString();
+	long flag2 = vector[4].asDouble();
+	long type2 = vector[5].asDouble();
+	long sort = vector[6].asDouble();
+	
+	return FValue(__dm->EnumWindowSuper(spec1.c_str(), flag1, type1, spec2.c_str(), flag2, type2, sort));
 }
 
 FValue DmCenter::DownloadFile(FValueVector vector){
@@ -2007,23 +2205,34 @@ FValue DmCenter::DownloadFile(FValueVector vector){
 }
 
 FValue DmCenter::EnableKeypadMsg(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+
+	return FValue(__dm->EnableKeypadMsg(enable));
 }
 
 FValue DmCenter::EnableMouseMsg(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+
+	return FValue(__dm->EnableMouseMsg(enable));
 }
 
 FValue DmCenter::RegNoMac(FValueVector vector){
-	return FValue();
+	string reg_code = vector[0].asString();
+	string ver_info = vector[1].asString();
+
+	return FValue(__dm->Reg(reg_code.c_str(), ver_info.c_str()));
 }
 
 FValue DmCenter::RegExNoMac(FValueVector vector){
-	return FValue();
+	string reg_code = vector[0].asString();
+	string ver_info = vector[1].asString();
+
+	return FValue(__dm->Reg(reg_code.c_str(), ver_info.c_str()));
 }
 
 FValue DmCenter::SetEnumWindowDelay(FValueVector vector){
-	return FValue();
+	long display = vector[0].asDouble();
+	return FValue(__dm->SetEnumWindowDelay(display));
 }
 
 FValue DmCenter::FindMulColor(FValueVector vector){
@@ -2044,7 +2253,7 @@ FValue DmCenter::GetDict(FValueVector vector){
 }
 
 FValue DmCenter::GetBindWindow(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetBindWindow());
 }
 
 FValue DmCenter::FoobarStartGif(FValueVector vector){
@@ -2084,11 +2293,13 @@ FValue DmCenter::GetNetTimeByIp(FValueVector vector){
 }
 
 FValue DmCenter::EnumProcess(FValueVector vector){
-	return FValue();
+	string name = vector[0].asString();
+	return FValue(__dm->EnumProcess(name.c_str()));
 }
 
 FValue DmCenter::GetProcessInfo(FValueVector vector){
-	return FValue();
+	long pid = vector[0].asDouble();
+	return FValue(__dm->GetProcessInfo(pid));
 }
 
 FValue DmCenter::ReadIntAddr(FValueVector vector){
@@ -2196,7 +2407,8 @@ FValue DmCenter::EnumIniKeyPwd(FValueVector vector){
 }
 
 FValue DmCenter::SwitchBindWindow(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	return FValue(__dm->SwitchBindWindow(hwnd));
 }
 
 FValue DmCenter::InitCri(FValueVector vector){
@@ -2204,11 +2416,19 @@ FValue DmCenter::InitCri(FValueVector vector){
 }
 
 FValue DmCenter::SendStringIme2(FValueVector vector){
-	return FValue();
+	long hwnd = vector[0].asDouble();
+	string str = vector[1].asString();
+	long mode = vector[2].asDouble();
+	return FValue(__dm->SendStringIme2(hwnd,str.c_str(),mode));
 }
 
 FValue DmCenter::EnumWindowByProcessId(FValueVector vector){
-	return FValue();
+	long parent = vector[0].asDouble();
+	string title = vector[1].asString();
+	string class_name = vector[2].asString();
+	long filter = vector[3].asDouble();
+
+	return FValue(__dm->EnumWindowByProcessId(parent, title.c_str(), class_name.c_str(), filter));
 }
 
 FValue DmCenter::GetDisplayInfo(FValueVector vector){
@@ -2230,7 +2450,8 @@ FValue DmCenter::OcrExOne(FValueVector vector){
 }
 
 FValue DmCenter::SetAero(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->SetAero(enable));
 }
 
 FValue DmCenter::FoobarSetTrans(FValueVector vector){
@@ -2238,7 +2459,8 @@ FValue DmCenter::FoobarSetTrans(FValueVector vector){
 }
 
 FValue DmCenter::EnablePicCache(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->EnablePicCache(enable));
 }
 
 FValue DmCenter::FaqIsPosted(FValueVector vector){
@@ -2331,7 +2553,8 @@ FValue DmCenter::GetDPI(FValueVector vector){
 }
 
 FValue DmCenter::SetDisplayRefreshDelay(FValueVector vector){
-	return FValue();
+	long time = vector[0].asDouble();
+	return FValue(__dm->SetDisplayRefreshDelay(time));
 }
 
 FValue DmCenter::IsFolderExist(FValueVector vector){
@@ -2351,7 +2574,7 @@ FValue DmCenter::SetExitThread(FValueVector vector){
 }
 
 FValue DmCenter::GetFps(FValueVector vector){
-	return FValue();
+	return FValue(__dm->GetFps());
 }
 
 FValue DmCenter::VirtualQueryEx(FValueVector vector){
@@ -2371,7 +2594,8 @@ FValue DmCenter::ExecuteCmd(FValueVector vector){
 }
 
 FValue DmCenter::SpeedNormalGraphic(FValueVector vector){
-	return FValue();
+	long enable = vector[0].asDouble();
+	return FValue(__dm->SpeedNormalGraphic(enable));
 }
 
 FValue DmCenter::UnLoadDriver(FValueVector vector){
@@ -2383,7 +2607,8 @@ FValue DmCenter::GetOsBuildNumber(FValueVector vector){
 }
 
 FValue DmCenter::HackSpeed(FValueVector vector){
-	return FValue();
+	long rate = vector[0].asDouble();
+	return FValue(__dm->HackSpeed(rate));
 }
 
 FValue DmCenter::GetRealPath(FValueVector vector){
